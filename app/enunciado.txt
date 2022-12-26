@@ -1,0 +1,35 @@
+Se pretende hacer una aplicación que registre los libros que se van almacenando en
+una biblioteca. Cuando se abre la aplicación y tras iniciar sesión o registrarse, debe
+mostrarse una pantalla con los siguientes botones:
+
+- Listar libros: cuando se presiona este botón, debe abrirse una nueva pantalla y
+mostrar el listado de todos los libros que hay almacenados. Por cada libro debe
+mostrarse: título, autor y editorial.
+
+- Eliminar libro: cuando se presiona este botón, debe abrirse una nueva pantalla
+y mostrar un pequeño formulario donde introducir el título del libro que se
+desea eliminar. El formulario tendrá un botón con el texto Eliminar. Cuando se
+presione, debe comprobarse si existe el libro. En caso de no existir, debe
+mostrarse un pequeño mensaje indicando que el libro no existe. En caso de
+existir, se borrará y se lanzará una notificación indicando el título del libro que
+se ha borrado. Nota: puede usar la clase Toast para mostrar el mensaje.
+
+- Añadir libro: cuando se presiona este botón, debe abrirse una nueva pantalla y
+mostrar un pequeño formulario para introducir el título del libro, el autor y la
+editorial. El formulario tendrá un botón con el texto Añadir. Cuando se
+presione, debe comprobarse si existe el libro. En caso de existir, debe
+mostrarse un pequeño mensaje indicando que el libro ya existe. En caso de no
+existir, se añadirá y se lanzará una notificación indicando el título del libro que
+se ha añadido. Nota: puede usar la clase Toast para mostrar el mensaje.
+Los requisitos imprescindibles para obtener la calificación de aprobado (5) es cumplir
+con los siguientes requisitos:
+
+- Implementar la aplicación haciendo uso de una base de datos SQLite.
+- Iniciar sesión en la base de datos o registrarse.
+- Implementar todas las pantallas.
+- Implementar correctamente la navegación entre las pantallas (debe poder
+volverse hacia la pantalla principal en todo momento).
+- Presentar un código libre de errores, correctamente comentado y tabulado. El
+código debe ser original (creación propia del alumno), no pudiendo presentar
+código desarrollado por otra persona o tomado completamente de internet.
+- Demostrar que la app es entendida por el alumno y es su propia creación.
