@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         text2 = findViewById(R.id.textPublica);
         logo = findViewById(R.id.imgLogo2);
         fondoVerde = findViewById(R.id.fondoVerde2);
-        //ejemplo
 
     }
 
