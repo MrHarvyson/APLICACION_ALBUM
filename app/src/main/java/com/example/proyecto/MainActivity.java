@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView text1, text2; //texto1 --> San Fernando  texto2 --> Biblioteca publica
     private ImageView fondoVerde, logo;
-    private Button btnlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
         text1 = findViewById(R.id.textSanFernando);
         text2 = findViewById(R.id.textPublica);
-        btnlogin = findViewById(R.id.btnEntrarInicio);
         logo = findViewById(R.id.imgLogo2);
         fondoVerde = findViewById(R.id.fondoVerde2);
         //ejemplo
