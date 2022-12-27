@@ -33,6 +33,28 @@ public class MainInicio extends AppCompatActivity {
 
     }
 
+    public void lista(View view){
+
+        //devuelve ultima activity
+        //finish();
+        Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+        Intent intent = new Intent(MainInicio.this, MainLista.class);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
+        startActivity(intent,options.toBundle());
+
+    }
+
+    public void anadir(View view){
+
+        //devuelve ultima activity
+        //finish();
+        Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+        Intent intent = new Intent(MainInicio.this, MainAnadir.class);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
+        startActivity(intent,options.toBundle());
+
+    }
+
     public  void salir(View view){
 
         //devuelve ultima activity
