@@ -3,4 +3,5 @@
     <string name="boton_entrar">ENTRAR</string>
     <string name="boton_registar">REGISTRAR</string>
     <string name="nombre_biblioteca">SAN FERNANDO</string>
+    <string name="agregar_libro">AGREGAR</string>
 </resources>

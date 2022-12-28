@@ -1,5 +1,6 @@
 package com.example.proyecto;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
@@ -10,11 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView text1, text2; //texto1 --> San Fernando  texto2 --> Biblioteca publica
-    private ImageView fondoVerde, logo;
+    private ImageView fondoVerde, logo, btnGoogle;
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +39,18 @@ public class MainActivity extends AppCompatActivity {
         text2 = findViewById(R.id.textPublica);
         logo = findViewById(R.id.imgLogo2);
         fondoVerde = findViewById(R.id.fondoVerde2);
+        //btnGoogle = findViewById(R.id.btnGoogle);
 
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(MainActivity.this, gso);
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+            Intent intent = new Intent(MainActivity.this, MainInicio.class);
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
+            startActivity(intent);
+        }
     }
 
     public void login(View view) {
@@ -43,7 +65,29 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MainRegister.class);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
         startActivity(intent, options.toBundle());
+    }
 
+    public void google(View view) {
+        Intent signInIntent = gsc.getSignInIntent();
+        startActivityForResult(signInIntent, 1000);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1000) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult(ApiException.class);
+                Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+                Intent intent = new Intent(MainActivity.this, MainInicio.class);
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
+                startActivity(intent);
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

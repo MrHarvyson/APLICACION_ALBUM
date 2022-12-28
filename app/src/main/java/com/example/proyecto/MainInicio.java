@@ -12,10 +12,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 public class MainInicio extends AppCompatActivity {
 
     private TextView text1, text2;
     private ImageView fondoVerde,logo;
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,8 @@ public class MainInicio extends AppCompatActivity {
         logo = findViewById(R.id.imgLogo2);
         fondoVerde = findViewById(R.id.imgFondoVerde);
 
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(this,gso);
     }
 
     public void lista(View view){
@@ -57,12 +68,15 @@ public class MainInicio extends AppCompatActivity {
 
     public  void salir(View view){
 
-        //devuelve ultima activity
-        //finish();
         Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
         Intent intent = new Intent(MainInicio.this, MainActivity.class);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
-        startActivity(intent,options.toBundle());
+
+        //cerrar sesion google
+        gsc.signOut().addOnCompleteListener(task -> {
+            //finish();
+            startActivity(intent,options.toBundle());
+        });
 
         //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
         Toast.makeText(this, "SESIÓN CERRADA", Toast.LENGTH_SHORT).show();

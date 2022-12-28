@@ -28,11 +28,12 @@
         tools:layout_editor_absoluteY="-2dp" />
 
     <TextView
-        android:id="@+id/textLista"
+        android:id="@+id/textAnadir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aldrich"
         android:text="AÑADIR"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="45dp"
         android:textStyle="bold"
@@ -41,5 +42,70 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:backgroundTint="#22B473"
+        android:ems="15"
+        android:fontFamily="@font/aldrich"
+        android:hint="Titulo"
+        android:inputType="textPersonName"
+        android:textColor="#22B473"
+        android:textColorHint="#22B473"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgFondoVerde2" />
+
+    <EditText
+        android:id="@+id/editTextAutor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:backgroundTint="#22B473"
+        android:ems="15"
+        android:fontFamily="@font/aldrich"
+        android:hint="Autor"
+        android:inputType="textPersonName"
+        android:textColor="#22B473"
+        android:textColorHint="#22B473"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTitulo" />
+
+    <EditText
+        android:id="@+id/editTextEditorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#22B473"
+        android:ems="15"
+        android:fontFamily="@font/aldrich"
+        android:hint="Editorial"
+        android:inputType="textPersonName"
+        android:textColor="#22B473"
+        android:textColorHint="#22B473"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAutor"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <Button
+        android:id="@+id/btnButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_verde_lleno"
+        android:fontFamily="@font/aldrich"
+        android:text="@string/agregar_libro"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEditorial" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
