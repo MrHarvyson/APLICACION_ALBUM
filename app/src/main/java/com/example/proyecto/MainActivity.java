@@ -80,9 +80,7 @@ public class MainActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 task.getResult(ApiException.class);
-                Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
                 Intent intent = new Intent(MainActivity.this, MainInicio.class);
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
                 startActivity(intent);
             } catch (ApiException e) {
                 e.printStackTrace();
