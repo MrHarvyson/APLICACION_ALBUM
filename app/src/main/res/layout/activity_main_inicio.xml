@@ -18,84 +18,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.922" />
 
-    <Button
-        android:id="@+id/btnLista"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="68dp"
-        android:background="@drawable/lista_de_texto_verde"
-        android:onClick="lista"
-        app:layout_constraintBottom_toTopOf="@+id/btnSalir"
-        app:layout_constraintEnd_toStartOf="@+id/btnAnadir"
-        app:layout_constraintHorizontal_bias="0.31"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgFondoVerde"
-        app:layout_constraintVertical_bias="0.218" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginBottom="79dp"
-        android:background="@drawable/edicion_verde"
-        app:layout_constraintBottom_toTopOf="@+id/btnSalir"
-        app:layout_constraintEnd_toEndOf="@+id/btnLista"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btnLista"
-        app:layout_constraintTop_toBottomOf="@+id/btnLista" />
-
-    <Button
-        android:id="@+id/btnAnadir"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginEnd="68dp"
-        android:background="@drawable/boton_mas_verde"
-        android:onClick="anadir"
-        app:layout_constraintBottom_toBottomOf="@+id/btnLista"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnLista"
-        app:layout_constraintTop_toTopOf="@+id/btnLista"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="62dp"
-        android:background="@drawable/basura_verede"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="@+id/btnAnadir"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btnAnadir"
-        app:layout_constraintTop_toTopOf="@+id/button3"
-        app:layout_constraintVertical_bias="1.0" />
-
     <ImageView
         android:id="@+id/imgFondoVerde"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="-20dp"
         android:background="@drawable/fondo_verde"
         android:transitionName="fondo"
-        app:layout_constraintBottom_toBottomOf="@+id/textPublica"
+        app:layout_constraintBottom_toBottomOf="@+id/textSanFernando"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgLogo2"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:transitionName="libro"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -108,11 +48,9 @@
         android:textSize="45dp"
         android:textStyle="bold"
         android:transitionName="texto1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgLogo2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textPublica"
@@ -123,11 +61,9 @@
         android:textColor="#A9FFFFFF"
         android:textSize="20sp"
         android:transitionName="texto2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textSanFernando"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textSanFernando"
-        app:layout_constraintTop_toBottomOf="@+id/textSanFernando"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/textSanFernando" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
