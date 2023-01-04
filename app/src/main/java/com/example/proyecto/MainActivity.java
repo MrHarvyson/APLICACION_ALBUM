@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyecto.db.Db;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -50,6 +53,20 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, MainInicio.class);
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
             startActivity(intent);
+        }
+
+        //crear la base de datos
+        crearBd();
+
+    }
+
+    private void crearBd() {
+        Db db = new Db(MainActivity.this);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+        if (dbData != null) {
+            Toast.makeText(this, "Base de datos creada", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Base de datos no creada", Toast.LENGTH_SHORT).show();
         }
     }
 
