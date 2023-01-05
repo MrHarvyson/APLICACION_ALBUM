@@ -69,6 +69,22 @@ public class Db extends SQLiteOpenHelper {
         SQLiteDatabase dbData = db.getWritableDatabase();
         Cursor fila = dbData.rawQuery("select * from usuarios where nombre = '" + nombre + "'", null);
 
+        if(fila.moveToFirst()){
+            String nomb = fila.getString(1);
+            String contra = fila.getString(2);
+            //divido este if para que me sirva comprobar el registro si existe con solo el nombre
+            if (nomb.equals(nombre) ) {
+                if (contra.equals(contrasena)){
+                    System.out.println("correcto");
+                    ok = true;
+                }
+            } else {
+                ok = false;
+                System.out.println("Incorrecto");
+            }
+        }
+
+        /* Este metodo es mas util para query con varios resultados
         while (fila.moveToNext()) {
             String nomb = fila.getString(1);
             String contra = fila.getString(2);
@@ -78,13 +94,13 @@ public class Db extends SQLiteOpenHelper {
                     System.out.println("correcto");
                     ok = true;
                 }
-
-
             } else {
                 ok = false;
                 System.out.println("Incorrecto");
             }
         }
+        */
+
         fila.close();
         return ok;
     }
