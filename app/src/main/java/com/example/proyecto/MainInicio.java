@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.proyecto.databinding.ActivityMainBinding;
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
+import com.example.proyecto.db.Db;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -43,6 +44,7 @@ public class MainInicio extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new ListaFragment());
 
+
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()){
@@ -61,6 +63,7 @@ public class MainInicio extends AppCompatActivity {
                     Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
                     Intent intent = new Intent(MainInicio.this, MainActivity.class);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
+                    //Db.clo();
 
                     //cerrar sesion google
                     gsc.signOut().addOnCompleteListener(task -> {

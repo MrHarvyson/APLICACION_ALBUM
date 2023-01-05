@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/textUsername"
+        android:id="@+id/textUsu"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
@@ -35,13 +35,13 @@
         android:textColor="#22B573"
         android:textColorHint="#22B573"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/textContra"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/textPassword"
+        android:id="@+id/textContra"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
@@ -64,7 +64,7 @@
         android:layout_marginBottom="130dp"
         android:background="@drawable/fondo_verde"
         android:transitionName="fondo"
-        app:layout_constraintBottom_toTopOf="@+id/textUsername"
+        app:layout_constraintBottom_toTopOf="@+id/textUsu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

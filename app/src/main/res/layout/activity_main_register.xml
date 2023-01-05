@@ -25,7 +25,7 @@
         app:layout_constraintVertical_bias="0.847" />
 
     <EditText
-        android:id="@+id/textUsername"
+        android:id="@+id/textUsu"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#22B473"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.446" />
 
     <EditText
-        android:id="@+id/textPassword"
+        android:id="@+id/textContra"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#22B473"
@@ -63,7 +63,7 @@
         app:layout_constraintVertical_bias="0.56" />
 
     <EditText
-        android:id="@+id/textPassword2"
+        android:id="@+id/textRecontrasena"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#22B473"

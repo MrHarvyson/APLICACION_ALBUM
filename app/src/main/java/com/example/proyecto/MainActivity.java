@@ -56,10 +56,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //crear la base de datos
-        crearBd();
+        Db.crearBd(MainActivity.this);
+
+
 
     }
 
+    /*
     private void crearBd() {
         Db db = new Db(MainActivity.this);
         SQLiteDatabase dbData = db.getWritableDatabase();
@@ -69,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Base de datos no creada", Toast.LENGTH_SHORT).show();
         }
     }
+
+     */
 
     public void login(View view) {
         Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
