@@ -44,7 +44,7 @@
         android:id="@+id/textContra"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="#22B473"
         android:ems="10"
         android:fontFamily="@font/aldrich"

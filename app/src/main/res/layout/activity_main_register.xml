@@ -10,6 +10,7 @@
         android:id="@+id/btnEntrar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
         android:background="@drawable/boton_verde_lleno"
         android:fontFamily="@font/aldrich"
         android:onClick="registrar"
@@ -20,52 +21,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.847" />
-
-    <EditText
-        android:id="@+id/textUsu"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#22B473"
-        android:ems="10"
-        android:fontFamily="@font/aldrich"
-        android:hint="Nombre usuario"
-        android:inputType="textPersonName"
-        android:textColor="#22B573"
-        android:textColorHint="#22B573"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446" />
-
-    <EditText
-        android:id="@+id/textContra"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#22B473"
-        android:ems="10"
-        android:fontFamily="@font/aldrich"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:textColor="#22B573"
-        android:textColorHint="#22B573"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/textRecontrasena"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="#22B473"
         android:ems="10"
         android:fontFamily="@font/aldrich"
@@ -74,23 +36,56 @@
         android:textColor="#22B573"
         android:textColorHint="#22B573"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnEntrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.668" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/textUsu"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#22B473"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:hint="Nombre usuario"
+        android:inputType="textPersonName"
+        android:textColor="#22B573"
+        android:textColorHint="#22B573"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textContra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/textContra"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#22B473"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#22B573"
+        android:textColorHint="#22B573"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textRecontrasena"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgFondoVerde"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="-20dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/fondo_verde"
         android:transitionName="fondo"
-        app:layout_constraintBottom_toBottomOf="@+id/textPublica"
+        app:layout_constraintBottom_toTopOf="@+id/textUsu"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -100,11 +95,11 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:transitionName="libro"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textSanFernando"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.75"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -117,26 +112,23 @@
         android:textSize="45dp"
         android:textStyle="bold"
         android:transitionName="texto1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textPublica"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textPublica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/aldrich"
         android:text="BIBLIOTECA PÚBLICA"
         android:textColor="#A9FFFFFF"
         android:textSize="20sp"
         android:transitionName="texto2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFondoVerde"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textSanFernando"
-        app:layout_constraintTop_toBottomOf="@+id/textSanFernando"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/textSanFernando" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
