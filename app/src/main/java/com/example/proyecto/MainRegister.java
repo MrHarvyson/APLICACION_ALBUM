@@ -17,7 +17,6 @@ public class MainRegister extends AppCompatActivity {
 
     private TextView text1, text2, textUsuario, textContrasena, textRecontrasena;
     private ImageView fondoVerde, logo;
-    private Button btnlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +29,11 @@ public class MainRegister extends AppCompatActivity {
 
         text1 = findViewById(R.id.textSanFernando);
         text2 = findViewById(R.id.textPublica);
-        btnlogin = findViewById(R.id.btnEntrar);
         logo = findViewById(R.id.imgLogo2);
         fondoVerde = findViewById(R.id.imgFondoVerde);
         textUsuario = findViewById(R.id.textUsu);
         textContrasena = findViewById(R.id.textContra);
         textRecontrasena = findViewById(R.id.textRecontrasena);
-        //Db.crearUsuario(this, "admin", "admin");
     }
 
     public void registrar(View view) {

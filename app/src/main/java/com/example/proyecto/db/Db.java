@@ -9,15 +9,12 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.example.proyecto.MainActivity;
-import com.example.proyecto.MainLogin;
-
 public class Db extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NOMBRE = "libros.db";
-    public static final String TABLA_LIBROS = "libros";
-    public static final String TABLA_USUARIOS = "usuarios";
+    public static final String TABLA_LIBROS = "libro";
+    public static final String TABLA_USUARIOS = "usuario";
 
     public Db(@Nullable Context context) {
         super(context, DATABASE_NOMBRE, null, DATABASE_VERSION);
@@ -27,13 +24,15 @@ public class Db extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT NOT NULL, contrasena TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE " + TABLA_LIBROS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, editorial TEXT NOT NULL)");
     }
 
+    //crear BD
     public static void crearBd(Context context) {
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
         if (dbData != null) {
-            Toast.makeText(context, "Base de datos creada", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Base de datos creada", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Base de datos no creada", Toast.LENGTH_SHORT).show();
         }
@@ -60,6 +59,26 @@ public class Db extends SQLiteOpenHelper {
         return id;
     }
 
+    //crear libros
+    public static long crearLibro(Context context, String nombre, String titulo, String editorial) {
+        long id = 0;
+        try {
+            Db db = new Db(context);
+            SQLiteDatabase dbData = db.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            values.put("nombre", nombre);
+            values.put("titulo", titulo);
+            values.put("editorial", editorial);
+
+            id = dbData.insert(TABLA_LIBROS, null, values);
+
+        } catch (Exception ex) {
+            System.out.println("ERRRORR");
+        }
+        return id;
+    }
+
     //consulta de usuario
     public static boolean consultaUsuario(Context context, String nombre, String contrasena) {
 
@@ -69,12 +88,12 @@ public class Db extends SQLiteOpenHelper {
         SQLiteDatabase dbData = db.getWritableDatabase();
         Cursor fila = dbData.rawQuery("select * from usuarios where nombre = '" + nombre + "'", null);
 
-        if(fila.moveToFirst()){
+        if (fila.moveToFirst()) {
             String nomb = fila.getString(1);
             String contra = fila.getString(2);
             //divido este if para que me sirva comprobar el registro si existe con solo el nombre
-            if (nomb.equals(nombre) ) {
-                if (contra.equals(contrasena)){
+            if (nomb.equals(nombre)) {
+                if (contra.equals(contrasena)) {
                     System.out.println("correcto");
                     ok = true;
                 }
@@ -105,6 +124,7 @@ public class Db extends SQLiteOpenHelper {
         return ok;
     }
 
+    //consultar registros no usado pq vale consultarUsuario
     public static boolean consultaRegistro(Context context, String nombre) {
 
         Db db = new Db(context);
@@ -133,10 +153,5 @@ public class Db extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-/*
-    public static void clo(){
-        dbData.close();
-        db.close();
-    }
-*/
+
 }

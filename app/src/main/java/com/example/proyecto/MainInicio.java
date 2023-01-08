@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 public class MainInicio extends AppCompatActivity {
 
+    //el nombre ActivityMainIncioBinding cambiara según la clase en la que estemos
     ActivityMainInicioBinding binding;
 
     private TextView text1, text2;
@@ -31,7 +32,9 @@ public class MainInicio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainInicioBinding.inflate(getLayoutInflater());
+
         //para ocultar barra con el titulo
         getSupportActionBar().hide();
 
