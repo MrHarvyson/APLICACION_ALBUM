@@ -6,11 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import com.example.proyecto.entidades.Libros;
-
 import java.util.ArrayList;
 
 public class Db extends SQLiteOpenHelper {
@@ -68,8 +65,8 @@ public class Db extends SQLiteOpenHelper {
     }
 
     //crear libros
-    public static void crearLibro(Context context,  String titulo,String autor, String editorial) {
-
+    public static long crearLibro(Context context,  String titulo, String autor, String editorial) {
+        long id = 0;
         try {
             Db db = new Db(context);
             SQLiteDatabase dbData = db.getWritableDatabase();
@@ -85,6 +82,7 @@ public class Db extends SQLiteOpenHelper {
         } catch (Exception ex) {
             System.out.println("ERRRORR");
         }
+        return id;
     }
 
     //consulta de usuario

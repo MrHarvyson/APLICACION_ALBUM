@@ -18,14 +18,14 @@ public class ListaLibrosAdapter extends RecyclerView.Adapter<ListaLibrosAdapter.
 
     ArrayList<Libros> listaLibros;
 
-    public ListaLibrosAdapter(ArrayList<Libros> listaLibros){
+    public ListaLibrosAdapter(ArrayList<Libros> listaLibros) {
         this.listaLibros = listaLibros;
     }
 
     @NonNull
     @Override
     public ListaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lista_libro,null,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lista_libro, null, false);
         return new ListaViewHolder(view);
     }
 
