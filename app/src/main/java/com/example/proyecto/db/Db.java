@@ -9,6 +9,10 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.proyecto.entidades.Libros;
+
+import java.util.ArrayList;
+
 public class Db extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -36,6 +40,8 @@ public class Db extends SQLiteOpenHelper {
         } else {
             Toast.makeText(context, "Base de datos no creada", Toast.LENGTH_SHORT).show();
         }
+        dbData.close();
+        db.close();
     }
 
 
@@ -52,31 +58,33 @@ public class Db extends SQLiteOpenHelper {
             values.put("contrasena", contrasena);
 
             id = dbData.insert(TABLA_USUARIOS, null, values);
-
+            dbData.close();
+            db.close();
         } catch (Exception ex) {
             System.out.println("ERRRORR");
         }
+
         return id;
     }
 
     //crear libros
-    public static long crearLibro(Context context, String nombre, String titulo, String editorial) {
-        long id = 0;
+    public static void crearLibro(Context context,  String titulo,String autor, String editorial) {
+
         try {
             Db db = new Db(context);
             SQLiteDatabase dbData = db.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put("nombre", nombre);
             values.put("titulo", titulo);
+            values.put("autor", autor);
             values.put("editorial", editorial);
 
-            id = dbData.insert(TABLA_LIBROS, null, values);
-
+            dbData.insert(TABLA_LIBROS, null, values);
+            dbData.close();
+            db.close();
         } catch (Exception ex) {
             System.out.println("ERRRORR");
         }
-        return id;
     }
 
     //consulta de usuario
@@ -86,7 +94,7 @@ public class Db extends SQLiteOpenHelper {
         boolean ok = false;
 
         SQLiteDatabase dbData = db.getWritableDatabase();
-        Cursor fila = dbData.rawQuery("select * from usuarios where nombre = '" + nombre + "'", null);
+        Cursor fila = dbData.rawQuery("select * from " + TABLA_USUARIOS + " where nombre = '" + nombre + "'", null);
 
         if (fila.moveToFirst()) {
             String nomb = fila.getString(1);
@@ -119,7 +127,8 @@ public class Db extends SQLiteOpenHelper {
             }
         }
         */
-
+        dbData.close();
+        db.close();
         fila.close();
         return ok;
     }
@@ -144,8 +153,39 @@ public class Db extends SQLiteOpenHelper {
                 System.out.println("no existe");
             }
         }
+        dbData.close();
+        db.close();
         fila.close();
         return ok;
+    }
+
+
+    public ArrayList<Libros> mostrarLibros(Context context){
+
+        Db db = new Db(context);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+
+        ArrayList<Libros> listaLibros = new ArrayList<>();
+        Libros libro = null;
+        Cursor cursorLibros = null;
+
+        cursorLibros = dbData.rawQuery("SELECT * FROM " + TABLA_LIBROS , null);
+
+        if(cursorLibros.moveToFirst()){
+            do{
+                libro = new Libros();
+                //libro.setId(cursorLibros.getInt(0));
+                libro.setTitulo(cursorLibros.getString(1));
+                libro.setAutor(cursorLibros.getString(2));
+                libro.setEditorial(cursorLibros.getString(3));
+                listaLibros.add(libro);
+            }while (cursorLibros.moveToNext());
+        }
+
+        cursorLibros.close();
+        dbData.close();
+        db.close();
+        return listaLibros;
     }
 
     //actualizar tablas

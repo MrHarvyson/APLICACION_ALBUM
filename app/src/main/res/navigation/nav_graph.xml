@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listaFragment">
+
+    <fragment
+        android:id="@+id/listaFragment"
+        android:name="com.example.proyecto.fragment.ListaFragment"
+        android:label="fragment_lista"
+        tools:layout="@layout/fragment_lista" >
+        <action
+            android:id="@+id/action_listaFragment_to_modificarFragment"
+            app:destination="@id/modificarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modificarFragment"
+        android:name="com.example.proyecto.fragment.ModificarFragment"
+        android:label="fragment_modificar"
+        tools:layout="@layout/fragment_modificar" >
+        <action
+            android:id="@+id/action_modificarFragment_to_crearFragment"
+            app:destination="@id/crearFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/borrarFragment"
+        android:name="com.example.proyecto.fragment.BorrarFragment"
+        android:label="fragment_borrar"
+        tools:layout="@layout/fragment_borrar" />
+    <fragment
+        android:id="@+id/crearFragment"
+        android:name="com.example.proyecto.fragment.CrearFragment"
+        android:label="fragment_crear"
+        tools:layout="@layout/fragment_crear" >
+        <action
+            android:id="@+id/action_crearFragment_to_borrarFragment"
+            app:destination="@id/borrarFragment" />
+    </fragment>
+</navigation>
