@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id = "@+id/lista"
+        android:title="Lista"
+        android:icon="@drawable/lista_de_texto_verde"/>
+    <item
+        android:id = "@+id/modificar"
+        android:title="Modificar"
+        android:icon="@drawable/edicion_verde"/>
+    <item
+        android:id = "@+id/anadir"
+        android:title="Añadir"
+        android:icon="@drawable/boton_mas_verde"/>
+    <item
+        android:id = "@+id/borrar"
+        android:title="Borrar"
+        android:icon="@drawable/basura_verede"/>
+    <item
+        android:id = "@+id/salir"
+        android:title="Salir"
+        android:icon="@drawable/cerrar_sesion2_verde"/>
+</menu>

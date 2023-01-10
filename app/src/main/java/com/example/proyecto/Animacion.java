@@ -6,12 +6,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 public class Animacion {
 
     private TextView text1, text2; //texto1 --> San Fernando  texto2 --> Biblioteca publica
-    private ImageView fondoVerde, logo;
+    private ImageView fondoVerde;
+    private LottieAnimationView logo;
 
-    public Animacion(TextView text1, TextView text2, ImageView fondoVerde, ImageView logo) {
+    public Animacion(TextView text1, TextView text2, ImageView fondoVerde, LottieAnimationView logo) {
         this.text1 = text1;
         this.text2 = text2;
         this.fondoVerde = fondoVerde;
