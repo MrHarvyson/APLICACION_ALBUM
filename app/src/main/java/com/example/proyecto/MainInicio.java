@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -23,7 +25,8 @@ public class MainInicio extends AppCompatActivity {
     //ArrayList<Libros> listaArrayLibros;
 
     private TextView text1, text2;
-    private ImageView fondoVerde,logo;
+    private ImageView fondoVerde;
+    private LottieAnimationView logo;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
 
@@ -84,7 +87,7 @@ public class MainInicio extends AppCompatActivity {
 
         text1 = findViewById(R.id.textSanFernando);
         text2 = findViewById(R.id.textPublica);
-        logo = findViewById(R.id.imgLogo2);
+        logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
         //listaLibros = findViewById(R.id.lista_libros);
 

@@ -11,12 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.db.Db;
 
 public class MainRegister extends AppCompatActivity {
 
     private TextView text1, text2, textUsuario, textContrasena, textRecontrasena;
-    private ImageView fondoVerde, logo;
+    private ImageView fondoVerde;
+    private LottieAnimationView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class MainRegister extends AppCompatActivity {
 
         text1 = findViewById(R.id.textSanFernando);
         text2 = findViewById(R.id.textPublica);
-        logo = findViewById(R.id.imgLogo2);
+        logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
         textUsuario = findViewById(R.id.textUsu);
         textContrasena = findViewById(R.id.textContra);

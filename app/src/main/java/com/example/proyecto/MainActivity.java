@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.db.Db;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -20,9 +21,10 @@ import com.google.android.gms.tasks.Task;
 public class MainActivity extends AppCompatActivity {
 
     private TextView text1, text2; //texto1 --> San Fernando  texto2 --> Biblioteca publica
-    private ImageView fondoVerde, logo, btnGoogle;
+    private ImageView fondoVerde, btnGoogle;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
+    private LottieAnimationView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         text1 = findViewById(R.id.textSanFernando);
         text2 = findViewById(R.id.textPublica);
-        logo = findViewById(R.id.imgLogo2);
+        logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.fondoVerde2);
         //btnGoogle = findViewById(R.id.btnGoogle);
 
