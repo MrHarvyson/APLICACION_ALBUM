@@ -47,6 +47,15 @@ public class MainInicio extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.myNavHost);
         NavController navController = navHostFragment.getNavController();
 
+        text1 = findViewById(R.id.textSanFernando);
+        text2 = findViewById(R.id.textPublica);
+        logo = findViewById(R.id.animation_view);
+        fondoVerde = findViewById(R.id.imgFondoVerde);
+        //listaLibros = findViewById(R.id.lista_libros);
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        gsc = GoogleSignIn.getClient(this,gso);
+
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()){
@@ -69,6 +78,7 @@ public class MainInicio extends AppCompatActivity {
                     Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
                     Intent intent = new Intent(MainInicio.this, MainActivity.class);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
+
                     //Db.clo();
 
                     //cerrar sesion google
@@ -85,14 +95,7 @@ public class MainInicio extends AppCompatActivity {
             return true;
         });
 
-        text1 = findViewById(R.id.textSanFernando);
-        text2 = findViewById(R.id.textPublica);
-        logo = findViewById(R.id.animation_view);
-        fondoVerde = findViewById(R.id.imgFondoVerde);
-        //listaLibros = findViewById(R.id.lista_libros);
 
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gsc = GoogleSignIn.getClient(this,gso);
 
 /*
         listaLibros.setLayoutManager(new LinearLayoutManager(MainInicio.this));

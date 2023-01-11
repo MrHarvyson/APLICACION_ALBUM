@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
      */
 
-    public void login(View view) {
+    public void entrar(View view) {
         Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
         Intent intent = new Intent(MainActivity.this, MainLogin.class);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
