@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/boton_oscuro"
         android:fontFamily="@font/aldrich"
-        android:onClick="login"
+        android:onClick="entrar"
         android:text="@string/boton_entrar"
         android:textColor="#22B573"
         android:textSize="24sp"
