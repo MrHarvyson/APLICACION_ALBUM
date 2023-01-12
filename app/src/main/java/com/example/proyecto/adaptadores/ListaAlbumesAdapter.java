@@ -1,6 +1,5 @@
 package com.example.proyecto.adaptadores;
 
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,49 +9,49 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyecto.R;
-import com.example.proyecto.entidades.Libros;
+import com.example.proyecto.entidades.Albumes;
 
 import java.util.ArrayList;
 
-public class ListaLibrosAdapter extends RecyclerView.Adapter<ListaLibrosAdapter.ListaViewHolder> {
+public class ListaAlbumesAdapter extends RecyclerView.Adapter<ListaAlbumesAdapter.ListaViewHolder> {
 
-    ArrayList<Libros> listaLibros;
+    ArrayList<Albumes> listaAlbumes;
 
-    public ListaLibrosAdapter(ArrayList<Libros> listaLibros) {
-        this.listaLibros = listaLibros;
+    public ListaAlbumesAdapter(ArrayList<Albumes> listaAlbumes) {
+        this.listaAlbumes = listaAlbumes;
     }
 
     @NonNull
     @Override
     public ListaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lista_libro, null, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lista_album, null, false);
         return new ListaViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ListaViewHolder holder, int position) {
 
-        holder.viewTitulo.setText(listaLibros.get(position).getTitulo());
-        holder.viewAutor.setText(listaLibros.get(position).getAutor());
-        holder.viewEditorial.setText(listaLibros.get(position).getEditorial());
+        holder.viewTitulo.setText(listaAlbumes.get(position).getTitulo());
+        holder.viewAutor.setText(listaAlbumes.get(position).getAutor());
+        holder.viewDiscografica.setText(listaAlbumes.get(position).getDiscografica());
 
     }
 
     @Override
     public int getItemCount() {
-        return listaLibros.size();
+        return listaAlbumes.size();
     }
 
     public class ListaViewHolder extends RecyclerView.ViewHolder {
 
-        TextView viewTitulo, viewAutor, viewEditorial;
+        TextView viewTitulo, viewAutor, viewDiscografica;
 
         public ListaViewHolder(@NonNull View itemView) {
             super(itemView);
 
             viewTitulo = itemView.findViewById(R.id.viewTitulo);
             viewAutor = itemView.findViewById(R.id.viewAutor);
-            viewEditorial = itemView.findViewById(R.id.viewEditorial);
+            viewDiscografica = itemView.findViewById(R.id.viewDiscografica);
         }
     }
 

@@ -55,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
 
 /*
         Db.crearBd(MainActivity.this);
-        Db.crearLibro(this, "El señor de lerus", "Paco Cabezas","El piquito");
-        Db.crearLibro(this, "La fabrica de 'Chocolate9'", "Luios Botry","Unfoil");
-        Db.crearLibro(this, "El hombre lobo", "Krenories Urtyue","Editorial Vapor");
-        Db.crearLibro(this, "El Cabezon", "Casa Botry","Casa");
-        Db.crearLibro(this, "El hombre lobo", "Krenories Urtyue","Editorial Vapor");
-        Db.crearLibro(this, "Las siete muertes", "María Acosta","Anaya");
-        Db.crearLibro(this, "Harry Potter y la piedra filosofal", "Matry","Unoixter");
-        Db.crearLibro(this, "En el nombre del viento", "Krenories Urtyue","Editorial Vapor");
+        Db.crearAlbum(this, "El señor de lerus", "Paco Cabezas","El piquito");
+        Db.crearAlbum(this, "La fabrica de 'Chocolate9'", "Luios Botry","Unfoil");
+        Db.crearAlbum(this, "El hombre lobo", "Krenories Urtyue","Editorial Vapor");
+        Db.crearAlbum(this, "El Cabezon", "Casa Botry","Casa");
+        Db.crearAlbum(this, "El hombre lobo", "Krenories Urtyue","Editorial Vapor");
+        Db.crearAlbum(this, "Las siete muertes", "María Acosta","Anaya");
+        Db.crearAlbum(this, "Harry Potter y la piedra filosofal", "Matry","Unoixter");
+        Db.crearAlbum(this, "En el nombre del viento", "Krenories Urtyue","Editorial Vapor");
         Db.crearUsuario(this, "Admin", "123");
 
          */

@@ -1,10 +1,10 @@
 package com.example.proyecto.entidades;
 
-public class Libros {
+public class Albumes {
     private int id;
     private String titulo;
     private String autor;
-    private String editorial;
+    private String discografica;
 
     public int getId() {
         return id;
@@ -30,11 +30,11 @@ public class Libros {
         this.autor = autor;
     }
 
-    public String getEditorial() {
-        return editorial;
+    public String getDiscografica() {
+        return discografica;
     }
 
-    public void setEditorial(String editorial) {
-        this.editorial = editorial;
+    public void setDiscografica(String discografica) {
+        this.discografica = discografica;
     }
 }

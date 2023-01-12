@@ -29,7 +29,7 @@ public class Animacion {
 
         Pair[] pairs = new Pair[4];
         pairs[0] = new Pair<View, String>(this.fondoVerde, "fondo");
-        pairs[1] = new Pair<View, String>(this.logo, "libro");
+        pairs[1] = new Pair<View, String>(this.logo, "album");
         pairs[2] = new Pair<View, String>(this.text1, "texto1");
         pairs[3] = new Pair<View, String>(this.text2, "texto2");
 

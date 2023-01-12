@@ -22,8 +22,8 @@ public class MainInicio extends AppCompatActivity {
 
     //el nombre ActivityMainIncioBinding cambiara según la clase en la que estemos
     ActivityMainInicioBinding binding;
-    //RecyclerView listaLibros;
-    //ArrayList<Libros> listaArrayLibros;
+    //RecyclerView listaAlbumes;
+    //ArrayList<Albumes> listaArrayAlbumes;
 
     private TextView text1, text2;
     private ImageView fondoVerde;
@@ -52,7 +52,7 @@ public class MainInicio extends AppCompatActivity {
         text2 = findViewById(R.id.textPublica);
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
-        //listaLibros = findViewById(R.id.lista_libros);
+        //listaAlbumes = findViewById(R.id.lista_albumes);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this,gso);
@@ -99,13 +99,13 @@ public class MainInicio extends AppCompatActivity {
 
 
 /*
-        listaLibros.setLayoutManager(new LinearLayoutManager(MainInicio.this));
+        listaAlbumes.setLayoutManager(new LinearLayoutManager(MainInicio.this));
 
         Db db = new Db(MainInicio.this);
-        listaArrayLibros = new ArrayList<>();
+        listaArrayAlbumes = new ArrayList<>();
 
-        ListaLibrosAdapter adapter = new ListaLibrosAdapter(db.mostrarLibros(MainInicio.this));
-        listaLibros.setAdapter(adapter);
+        ListaAlbumesAdapter adapter = new ListaAlbumesAdapter(db.mostrarAlbumes(MainInicio.this));
+        listaAlbumes.setAdapter(adapter);
 */
     }
 
