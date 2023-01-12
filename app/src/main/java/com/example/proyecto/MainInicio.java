@@ -6,6 +6,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -106,6 +107,23 @@ public class MainInicio extends AppCompatActivity {
         ListaLibrosAdapter adapter = new ListaLibrosAdapter(db.mostrarLibros(MainInicio.this));
         listaLibros.setAdapter(adapter);
 */
+    }
+
+    public void cerrarSesion(View view){
+        Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+        Intent intent = new Intent(MainInicio.this, MainActivity.class);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
+
+        //Db.clo();
+
+        //cerrar sesion google
+        gsc.signOut().addOnCompleteListener(task -> {
+            //finish();
+            startActivity(intent,options.toBundle());
+        });
+
+        //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
+        Toast.makeText(this, "SESIÓN CERRADA", Toast.LENGTH_SHORT).show();
     }
 /*
     private void replaceFragment(Fragment fragment){
