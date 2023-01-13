@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/aldrich"
-        android:text="@string/nombre_biblioteca"
+        android:text="@string/nombre_aplicacion"
         android:textColor="#FFFFFF"
         android:textSize="45dp"
         android:textStyle="bold"
@@ -111,17 +111,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_cerrarSesion"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/cerrar_sesion2_verde"
-            android:onClick="cerrarSesion"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.506" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

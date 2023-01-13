@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Proyecto</string>
+    <string name="app_name">TUNEHUB</string>
     <string name="boton_entrar">ENTRAR</string>
     <string name="boton_registar">REGISTRAR</string>
-    <string name="nombre_biblioteca">SAN FERNANDO</string>
+    <string name="nombre_aplicacion">TUNEHUB</string>
     <string name="agregar_album">AGREGAR</string>
+    <string name="boton_borrar">BORRAR</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
