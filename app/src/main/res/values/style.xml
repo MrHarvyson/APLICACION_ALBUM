@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="theme_libreria" parent="Theme.Design">
+    <style name="theme_albumes" parent="Theme.Design">
 
 
         <item name="android:windowContentTransitions">true</item>
