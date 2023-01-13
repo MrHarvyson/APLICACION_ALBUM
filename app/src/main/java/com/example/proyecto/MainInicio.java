@@ -75,21 +75,8 @@ public class MainInicio extends AppCompatActivity {
                 case R.id.borrar:
                     navController.navigate(R.id.borrarFragment);
                     break;
-                case R.id.salir:
-                    Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
-                    Intent intent = new Intent(MainInicio.this, MainActivity.class);
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
-
-                    //Db.clo();
-
-                    //cerrar sesion google
-                    gsc.signOut().addOnCompleteListener(task -> {
-                        //finish();
-                        startActivity(intent,options.toBundle());
-                    });
-
-                    //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
-                    Toast.makeText(this, "SESIÓN CERRADA", Toast.LENGTH_SHORT).show();
+                case R.id.acerca:
+                    navController.navigate(R.id.acercaFragment);
                     break;
             }
 
