@@ -6,8 +6,8 @@
         android:title="Lista"
         android:icon="@drawable/lista_de_texto_verde"/>
     <item
-        android:id = "@+id/modificar"
-        android:title="Modificar"
+        android:id = "@+id/acerca"
+        android:title="Acerca de"
         android:icon="@drawable/edicion_verde"/>
     <item
         android:id = "@+id/anadir"
@@ -18,7 +18,7 @@
         android:title="Borrar"
         android:icon="@drawable/basura_verede"/>
     <item
-        android:id = "@+id/acerca"
-        android:title="Acerca de"
+        android:id = "@+id/salir"
+        android:title="Salir"
         android:icon="@drawable/cerrar_sesion2_verde"/>
 </menu>
