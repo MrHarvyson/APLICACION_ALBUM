@@ -7,42 +7,51 @@
     tools:context=".fragment.BorrarFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BORRAR"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_borrar"
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:background="@drawable/boton_verde_lleno"
         android:fontFamily="@font/aldrich"
+        android:onClick="borrar"
         android:text="@string/boton_borrar"
+        android:textColor="@color/negro"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="559dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
 
     <EditText
-        android:id="@+id/btn_borrar"
-        android:layout_width="wrap_content"
+        android:id="@+id/editText_borrar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="264dp"
+        android:backgroundTint="@color/verde"
         android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:hint="@string/entrada_titulo"
         android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="370dp" />
+        android:textColorHint="@color/verde"
+        app:layout_constraintBottom_toTopOf="@+id/btn_borrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textErrorBorrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="683dp" />
+        android:layout_marginTop="116dp"
+        android:textColor="@color/design_default_color_error"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/btn_borrar"
+        app:layout_constraintStart_toStartOf="@+id/btn_borrar"
+        app:layout_constraintTop_toBottomOf="@+id/btn_borrar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

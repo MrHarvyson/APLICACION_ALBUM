@@ -8,7 +8,7 @@
     <item
         android:id = "@+id/acerca"
         android:title="Acerca de"
-        android:icon="@drawable/edicion_verde"/>
+        android:icon="@drawable/info"/>
     <item
         android:id = "@+id/anadir"
         android:title="Añadir"
