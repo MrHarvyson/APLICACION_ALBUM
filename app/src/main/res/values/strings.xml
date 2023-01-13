@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">TUNEHUB</string>
+    <string name="nombre_aplicacion">TUNEHUB</string>
+    <string name="eslogan">Guardamos tus momentos</string>
+
     <string name="boton_entrar">ENTRAR</string>
     <string name="boton_registar">REGISTRAR</string>
-    <string name="nombre_aplicacion">TUNEHUB</string>
-    <string name="agregar_album">AGREGAR</string>
     <string name="boton_borrar">BORRAR</string>
     <string name="boton_agregar">AGREGAR</string>
+
     <string name="entrada_titulo">TÍTULO DEL ÁLBUM</string>
     <string name="entrada_autor">AUTOR</string>
     <string name="entrada_discografia">DISCOGRAFÍA</string>
