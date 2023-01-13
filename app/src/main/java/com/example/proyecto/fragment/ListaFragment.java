@@ -3,27 +3,24 @@ package com.example.proyecto.fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+
 import com.example.proyecto.R;
-import com.example.proyecto.adaptadores.ListaLibrosAdapter;
+import com.example.proyecto.adaptadores.ListaAlbumesAdapter;
 import com.example.proyecto.db.Db;
-import com.example.proyecto.entidades.Libros;
+import com.example.proyecto.entidades.Albumes;
 
 import java.util.ArrayList;
 
 public class ListaFragment extends Fragment {
 
-    private RecyclerView listaLibros;
-    private ArrayList<Libros> listaArrayLibros;
+    private RecyclerView listaAlbumes;
+    private ArrayList<Albumes> listaArrayAlbumes;
 
 
 
@@ -33,12 +30,12 @@ public class ListaFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_lista, container, false);
-        listaArrayLibros = new ArrayList<>();
-        listaLibros = (RecyclerView) view.findViewById(R.id.lista_libros);
-        listaLibros.setLayoutManager(new LinearLayoutManager(getContext()));
+        listaArrayAlbumes = new ArrayList<>();
+        listaAlbumes = (RecyclerView) view.findViewById(R.id.lista_albumes);
+        listaAlbumes.setLayoutManager(new LinearLayoutManager(getContext()));
         Db db = new Db(getContext());
-        ListaLibrosAdapter adapter = new ListaLibrosAdapter(db.mostrarLibros(getContext()));
-        listaLibros.setAdapter(adapter);
+        ListaAlbumesAdapter adapter = new ListaAlbumesAdapter(db.mostrarAlbumes(getContext()));
+        listaAlbumes.setAdapter(adapter);
 
 
 
