@@ -5,6 +5,10 @@
     <string name="nombre_aplicacion">TUNEHUB</string>
     <string name="agregar_album">AGREGAR</string>
     <string name="boton_borrar">BORRAR</string>
+    <string name="boton_agregar">AGREGAR</string>
+    <string name="entrada_titulo">TÍTULO DEL ÁLBUM</string>
+    <string name="entrada_autor">AUTOR</string>
+    <string name="entrada_discografia">DISCOGRAFÍA</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

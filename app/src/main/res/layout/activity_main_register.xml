@@ -15,7 +15,7 @@
         android:fontFamily="@font/aldrich"
         android:onClick="registrar"
         android:text="@string/boton_registar"
-        android:textColor="#333333"
+        android:textColor="@color/negro"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
