@@ -83,41 +83,6 @@ public class MainInicio extends AppCompatActivity {
             return true;
         });
 
-
-
-/*
-        listaAlbumes.setLayoutManager(new LinearLayoutManager(MainInicio.this));
-
-        Db db = new Db(MainInicio.this);
-        listaArrayAlbumes = new ArrayList<>();
-
-        ListaAlbumesAdapter adapter = new ListaAlbumesAdapter(db.mostrarAlbumes(MainInicio.this));
-        listaAlbumes.setAdapter(adapter);
-*/
     }
 
-    public void cerrarSesion(View view){
-        Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
-        Intent intent = new Intent(MainInicio.this, MainActivity.class);
-        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
-
-        //Db.clo();
-
-        //cerrar sesion google
-        gsc.signOut().addOnCompleteListener(task -> {
-            //finish();
-            startActivity(intent,options.toBundle());
-        });
-
-        //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
-        Toast.makeText(this, "SESIÓN CERRADA", Toast.LENGTH_SHORT).show();
-    }
-/*
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout,fragment);
-        fragmentTransaction.commit();
-    }
-*/
 }
