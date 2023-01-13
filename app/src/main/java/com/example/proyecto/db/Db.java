@@ -7,14 +7,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
-import com.example.proyecto.entidades.Libros;
+
+import com.example.proyecto.entidades.Albumes;
+
 import java.util.ArrayList;
 
 public class Db extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NOMBRE = "libros.db";
-    public static final String TABLA_LIBROS = "libro";
+    private static final String DATABASE_NOMBRE = "albumes.db";
+    public static final String TABLA_ALBUMES = "album";
     public static final String TABLA_USUARIOS = "usuario";
 
     public Db(@Nullable Context context) {
@@ -25,7 +27,7 @@ public class Db extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT NOT NULL, contrasena TEXT NOT NULL)");
-        db.execSQL("CREATE TABLE " + TABLA_LIBROS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, editorial TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE " + TABLA_ALBUMES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, discografica TEXT NOT NULL)");
     }
 
     //crear BD
@@ -64,8 +66,8 @@ public class Db extends SQLiteOpenHelper {
         return id;
     }
 
-    //crear libros
-    public static long crearLibro(Context context,  String titulo, String autor, String editorial) {
+    //crear albumes
+    public static long crearAlbum(Context context, String titulo, String autor, String discografica) {
         long id = 0;
         try {
             Db db = new Db(context);
@@ -74,9 +76,9 @@ public class Db extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put("titulo", titulo);
             values.put("autor", autor);
-            values.put("editorial", editorial);
+            values.put("discografica", discografica);
 
-            dbData.insert(TABLA_LIBROS, null, values);
+            dbData.insert(TABLA_ALBUMES, null, values);
             dbData.close();
             db.close();
         } catch (Exception ex) {
@@ -158,32 +160,32 @@ public class Db extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<Libros> mostrarLibros(Context context){
+    public ArrayList<Albumes> mostrarAlbumes(Context context){
 
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
 
-        ArrayList<Libros> listaLibros = new ArrayList<>();
-        Libros libro = null;
-        Cursor cursorLibros = null;
+        ArrayList<Albumes> listaAlbumes = new ArrayList<>();
+        Albumes album = null;
+        Cursor cursorAlbumes = null;
 
-        cursorLibros = dbData.rawQuery("SELECT * FROM " + TABLA_LIBROS , null);
+        cursorAlbumes = dbData.rawQuery("SELECT * FROM " + TABLA_ALBUMES , null);
 
-        if(cursorLibros.moveToFirst()){
+        if(cursorAlbumes.moveToFirst()){
             do{
-                libro = new Libros();
-                //libro.setId(cursorLibros.getInt(0));
-                libro.setTitulo(cursorLibros.getString(1));
-                libro.setAutor(cursorLibros.getString(2));
-                libro.setEditorial(cursorLibros.getString(3));
-                listaLibros.add(libro);
-            }while (cursorLibros.moveToNext());
+                album = new Albumes();
+                //album.setId(cursorAlbumes.getInt(0));
+                album.setTitulo(cursorAlbumes.getString(1));
+                album.setAutor(cursorAlbumes.getString(2));
+                album.setDiscografica(cursorAlbumes.getString(3));
+                listaAlbumes.add(album);
+            }while (cursorAlbumes.moveToNext());
         }
 
-        cursorLibros.close();
+        cursorAlbumes.close();
         dbData.close();
         db.close();
-        return listaLibros;
+        return listaAlbumes;
     }
 
     //actualizar tablas

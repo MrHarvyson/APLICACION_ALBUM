@@ -74,12 +74,12 @@
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="EDITORIAL: "
+                    android:text="DISCOGRAFICA: "
                     android:textColor="@color/verde"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/viewEditorial"
+                    android:id="@+id/viewDiscografica"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView" />
