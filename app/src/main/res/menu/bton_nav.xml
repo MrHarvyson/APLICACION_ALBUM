@@ -18,7 +18,7 @@
         android:title="Borrar"
         android:icon="@drawable/basura_verede"/>
     <item
-        android:id = "@+id/salir"
-        android:title="Salir"
+        android:id = "@+id/acerca"
+        android:title="Acerca de"
         android:icon="@drawable/cerrar_sesion2_verde"/>
 </menu>
