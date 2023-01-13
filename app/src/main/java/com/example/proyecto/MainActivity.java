@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.example.proyecto.db.Db;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -34,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         //para ocultar barra con el titulo
         getSupportActionBar().hide();
 
-        text1 = findViewById(R.id.textSanFernando);
-        text2 = findViewById(R.id.textPublica);
+        text1 = findViewById(R.id.textNombreAplicacion);
+        text2 = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
-        fondoVerde = findViewById(R.id.fondoVerde2);
+        fondoVerde = findViewById(R.id.fondoVerde);
         //btnGoogle = findViewById(R.id.btnGoogle);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();

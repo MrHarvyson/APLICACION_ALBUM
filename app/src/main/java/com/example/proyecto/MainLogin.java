@@ -6,6 +6,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +17,8 @@ import com.example.proyecto.db.Db;
 
 public class MainLogin extends AppCompatActivity {
 
-    private TextView text1, text2, textUsuario, textContrasena;
+    private TextView text1, text2;
+    private EditText textUsuario, textContrasena;
     private ImageView fondoVerde;
     private LottieAnimationView logo;
 
@@ -28,8 +30,8 @@ public class MainLogin extends AppCompatActivity {
         //para ocultar barra con el titulo
         getSupportActionBar().hide();
 
-        text1 = findViewById(R.id.textSanFernando);
-        text2 = findViewById(R.id.textPublica);
+        text1 = findViewById(R.id.textNombreAplicacion);
+        text2 = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
         textUsuario = findViewById(R.id.textUsu);

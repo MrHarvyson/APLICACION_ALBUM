@@ -6,7 +6,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,8 +47,8 @@ public class MainInicio extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.myNavHost);
         NavController navController = navHostFragment.getNavController();
 
-        text1 = findViewById(R.id.textSanFernando);
-        text2 = findViewById(R.id.textPublica);
+        text1 = findViewById(R.id.textNombreAplicacion);
+        text2 = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
         //listaAlbumes = findViewById(R.id.lista_albumes);

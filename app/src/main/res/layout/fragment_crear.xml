@@ -19,7 +19,7 @@
         android:inputType="textPersonName"
         android:textColor="@color/verde"
         android:textColorHint="@color/verde"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Agregar"
+        app:layout_constraintBottom_toTopOf="@+id/btn_agregar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textAutor" />
 
     <Button
-        android:id="@+id/btn_Agregar"
+        android:id="@+id/btn_agregar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/boton_verde_lleno"
