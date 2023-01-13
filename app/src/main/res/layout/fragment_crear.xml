@@ -10,7 +10,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AGREGAR LIBRO"
+        android:text="AGREGAR ÁLBUM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:ems="10"
-        android:hint="EDITORIAL"
+        android:hint="DISCOGRÁFICA"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -59,10 +59,7 @@
         android:id="@+id/btn_Agregar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_marginTop="50dp"
-=======
->>>>>>> master
+
         android:background="@drawable/boton_verde_lleno"
         android:onClick="agregar"
         android:text="AGREGAR"
@@ -71,12 +68,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
-        app:layout_constraintTop_toBottomOf="@+id/textDiscografica"
-        app:layout_constraintVertical_bias="0.0" />
-=======
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.87" />
->>>>>>> master
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
