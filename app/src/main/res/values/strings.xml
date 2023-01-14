@@ -8,6 +8,14 @@
     <string name="boton_borrar">BORRAR</string>
     <string name="boton_agregar">AGREGAR</string>
 
+    <string name="texto_titulo">TÍTULO:</string>
+    <string name="texto_autor">AUTOR:</string>
+    <string name="texto_discografica">DISCOGRÁFICA:</string>
+
+    <string name="entrada_usuario">Usuario</string>
+    <string name="entrada_contrasena">Contraseña</string>
+    <string name="entrada_nombre_usuario">Nombre de usuario</string>
+    <string name="entrada_repetir_contrasena">Repetir contraseña</string>
     <string name="entrada_titulo">TÍTULO DEL ÁLBUM</string>
     <string name="entrada_autor">AUTOR</string>
     <string name="entrada_discografia">DISCOGRAFÍA</string>
