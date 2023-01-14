@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string name="app_name">TUNEHUB</string>
+        <string name="nombre_aplicacion">TUNEHUB</string>
+        <string name="eslogan">We keep your moments</string>
+
+        <string name="boton_entrar">LOG IN</string>
+        <string name="boton_registar">SIGN IN</string>
+        <string name="boton_borrar">DELETE</string>
+        <string name="boton_agregar">ADD</string>
+
+        <string name="texto_titulo">TITLE:</string>
+        <string name="texto_autor">SONGWRITER:</string>
+        <string name="texto_discografica">RECORD LABEL:</string>
+
+        <string name="entrada_usuario">User</string>
+        <string name="entrada_contrasena">Password</string>
+        <string name="entrada_nombre_usuario">Username</string>
+        <string name="entrada_repetir_contrasena">Repeat password</string>
+        <string name="entrada_titulo">ALBUM TITLE</string>
+        <string name="entrada_autor">SONGWRITER</string>
+        <string name="entrada_discografia">RECORD LABEL</string>
+        <!-- TODO: Remove or change this placeholder text -->
+        <string name="hello_blank_fragment">Hello blank fragment</string>
+    </resources>
