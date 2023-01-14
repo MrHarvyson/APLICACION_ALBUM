@@ -42,7 +42,8 @@
                     android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TÍTULO: "
+                    android:fontFamily="@font/aldrich"
+                    android:text="@string/texto_titulo"
                     android:textColor="@color/verde"
                     android:textStyle="bold" />
 
@@ -50,6 +51,7 @@
                     android:id="@+id/viewTitulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/aldrich"
                     android:text="TextView" />
             </LinearLayout>
 
@@ -63,7 +65,8 @@
                     android:id="@+id/textView8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AUTOR: "
+                    android:fontFamily="@font/aldrich"
+                    android:text="@string/texto_autor"
                     android:textColor="@color/verde"
                     android:textStyle="bold" />
 
@@ -71,6 +74,7 @@
                     android:id="@+id/viewAutor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/aldrich"
                     android:text="TextView" />
             </LinearLayout>
 
@@ -84,7 +88,8 @@
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="DISCOGRÁFICA: "
+                    android:fontFamily="@font/aldrich"
+                    android:text="@string/texto_discografica"
                     android:textColor="@color/verde"
                     android:textStyle="bold" />
 
@@ -92,6 +97,7 @@
                     android:id="@+id/viewDiscografica"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/aldrich"
                     android:text="TextView" />
             </LinearLayout>
 
