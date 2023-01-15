@@ -15,6 +15,9 @@
         android:theme="@style/theme_albumes"
         tools:targetApi="31">
         <activity
+            android:name=".MainPerfil"
+            android:exported="false" />
+        <activity
             android:name=".MainInicio"
             android:exported="false">
             <meta-data
