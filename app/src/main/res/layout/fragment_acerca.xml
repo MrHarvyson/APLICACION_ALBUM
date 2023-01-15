@@ -1,14 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.AcercaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/imgAcercaDe"
+        android:layout_width="219dp"
+        android:layout_height="157dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/foto_acerca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textNombres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:fontFamily="@font/aldrich"
+        android:text="@string/texto_nombre"
+        android:textColor="@color/verde"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgAcercaDe" />
+
+    <TextView
+        android:id="@+id/textBio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/aldrich"
+        android:text="@string/texto_bio"
+        android:textColor="@color/grisClaro"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textNombres" />
+
+    <TextView
+        android:id="@+id/textCaracteristicas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="29dp"
+        android:fontFamily="@font/aldrich"
+        android:text="@string/titulo_caracteristicas"
+        android:textColor="@color/verde"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBio" />
+
+    <Button
+        android:id="@+id/btn_acerca_lista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="21dp"
+        android:text="Lista"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCaracteristicas" />
+
+    <Button
+        android:id="@+id/btn_acerca_agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Agregar"
+        app:layout_constraintStart_toEndOf="@+id/btn_acerca_lista"
+        app:layout_constraintTop_toBottomOf="@+id/textCaracteristicas" />
+
+    <Button
+        android:id="@+id/btn_acerca_borrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Borrar"
+        app:layout_constraintStart_toEndOf="@+id/btn_acerca_agregar"
+        app:layout_constraintTop_toBottomOf="@+id/textCaracteristicas" />
+
+    <Button
+        android:id="@+id/btn_acerca_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
+        android:text="Versión"
+        app:layout_constraintStart_toEndOf="@+id/btn_acerca_borrar"
+        app:layout_constraintTop_toBottomOf="@+id/textBio" />
+
+    <Button
+        android:id="@+id/btn_acerca_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="Información de la app"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_acerca_lista" />
+
+    <TextView
+        android:id="@+id/textView_acerca_descr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/aldrich"
+        android:text="TextView"
+        android:textColor="@color/grisClaro"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_acerca_info" />
+</androidx.constraintlayout.widget.ConstraintLayout>
