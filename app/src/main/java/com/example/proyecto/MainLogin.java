@@ -18,7 +18,8 @@ import com.example.proyecto.db.Db;
 public class MainLogin extends AppCompatActivity {
 
     private TextView text1, text2;
-    private EditText textUsuario, textContrasena;
+    private EditText textUsuario;
+    private EditText textContrasena;
     private ImageView fondoVerde;
     private LottieAnimationView logo;
 
@@ -36,25 +37,23 @@ public class MainLogin extends AppCompatActivity {
         fondoVerde = findViewById(R.id.imgFondoVerde);
         textUsuario = findViewById(R.id.textUsu);
         textContrasena = findViewById(R.id.textContra);
+
     }
 
     public void entrar(View view){
         try{
-            Boolean ok =  Db.consultaUsuario(MainLogin.this, textUsuario.getText().toString(),textContrasena.getText().toString());
-
-            if(ok){
+            if(Db.consultaUsuario(MainLogin.this, textUsuario.getText().toString(),textContrasena.getText().toString())){
                 Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
                 Intent intent = new Intent(this, MainInicio.class);
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, anim.animacion());
+                Usuario.crearusuario(textUsuario.getText().toString());
                 startActivity(intent,options.toBundle());
             }else{
                 Toast.makeText(this, "CONTRASEÑA/USUARIO INCORRECTO", Toast.LENGTH_SHORT).show();
                 textContrasena.setText("");
             }
-
-
         }catch (Exception ex){
-            Toast.makeText(this, "SUPER ERROR", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
         }
 
     }
