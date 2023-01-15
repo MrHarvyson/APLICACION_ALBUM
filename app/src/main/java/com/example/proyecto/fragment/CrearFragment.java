@@ -49,10 +49,13 @@ public class CrearFragment extends Fragment {
             public void onClick(View view) {
 
                 if(!titulo.getText().toString().equals("") && !autor.getText().toString().equals("") && !discografica.getText().toString().equals("")){
-                    Db.crearAlbum(getContext(), titulo.getText().toString(),autor.getText().toString(), discografica.getText().toString());
-                    Toast.makeText(getContext(), "HAY QUE PONER NOTIFICACION", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), MainInicio.class);
-                    startActivity(intent);
+                    if(Db.crearAlbum(getContext(), titulo.getText().toString(),autor.getText().toString(), discografica.getText().toString())){
+                        Toast.makeText(getContext(), "HAY QUE PONER NOTIFICACION", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getContext(), MainInicio.class);
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(getContext(), "ERROR BASE DE DATOS", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     Toast.makeText(getContext(), "COMPLETE TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
                 }

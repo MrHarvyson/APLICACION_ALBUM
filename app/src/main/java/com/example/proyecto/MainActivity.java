@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -20,7 +21,7 @@ import com.google.android.gms.tasks.Task;
 public class MainActivity extends AppCompatActivity {
 
     private TextView text1, text2; //texto1 --> San Fernando  texto2 --> Biblioteca publica
-    private ImageView fondoVerde, btnGoogle;
+    private ImageView fondoVerde;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
     private LottieAnimationView logo;
@@ -37,49 +38,12 @@ public class MainActivity extends AppCompatActivity {
         text2 = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.fondoVerde);
-        //btnGoogle = findViewById(R.id.btnGoogle);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(MainActivity.this, gso);
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if (acct != null) {
-            Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
-            Intent intent = new Intent(MainActivity.this, MainInicio.class);
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
-            startActivity(intent);
-        }
-
-        //crear la base de datos
-
-/*
-        Db.crearBd(MainActivity.this);
-        Db.crearAlbum(this, "El señor de lerus", "Paco Cabezas","El piquito");
-        Db.crearAlbum(this, "La fabrica de 'Chocolate9'", "Luios Botry","Unfoil");
-        Db.crearAlbum(this, "El hombre lobo", "Krenories Urtyue","Editorial Vapor");
-        Db.crearAlbum(this, "El Cabezon", "Casa Botry","Casa");
-        Db.crearAlbum(this, "El hombre lobo", "Krenories Urtyue","Editorial Vapor");
-        Db.crearAlbum(this, "Las siete muertes", "María Acosta","Anaya");
-        Db.crearAlbum(this, "Harry Potter y la piedra filosofal", "Matry","Unoixter");
-        Db.crearAlbum(this, "En el nombre del viento", "Krenories Urtyue","Editorial Vapor");
-        Db.crearUsuario(this, "Admin", "123");
-
-         */
 
     }
-
-    /*
-    private void crearBd() {
-        Db db = new Db(MainActivity.this);
-        SQLiteDatabase dbData = db.getWritableDatabase();
-        if (dbData != null) {
-            Toast.makeText(this, "Base de datos creada", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(this, "Base de datos no creada", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-     */
 
     public void entrar(View view) {
         Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
@@ -115,5 +79,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 }
