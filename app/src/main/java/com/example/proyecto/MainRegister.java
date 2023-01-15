@@ -41,15 +41,10 @@ public class MainRegister extends AppCompatActivity {
 
     public void registrar(View view) {
 
-        boolean x = false;
-        x = Db.consultaUsuario(this, textUsuario.getText().toString(),textContrasena.getText().toString());
-
-        if (!x) {
+        if (!Db.consultaUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString())) {
             if (textContrasena.getText().toString().equals(textRecontrasena.getText().toString())) {
 
-                long comprobacion = Db.crearUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString());
-
-                if (comprobacion > 0) {
+                if (Db.crearUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString())) {
                     Toast.makeText(this, "USUARIO CREADO", Toast.LENGTH_SHORT).show();
 
                     Animacion anim = new Animacion(text1, text2, fondoVerde, logo);

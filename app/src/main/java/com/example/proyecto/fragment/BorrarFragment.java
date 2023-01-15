@@ -1,6 +1,8 @@
 package com.example.proyecto.fragment;
 
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.proyecto.Animacion;
 import com.example.proyecto.MainActivity;
 import com.example.proyecto.MainInicio;
 import com.example.proyecto.MainLogin;
@@ -22,6 +26,7 @@ import com.example.proyecto.db.Db;
 
 public class BorrarFragment extends Fragment {
     private Button borrar;
+    private EditText titulo;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,7 @@ public class BorrarFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_borrar, container, false);
         borrar = (Button) view.findViewById(R.id.btn_borrar);
+        titulo = (EditText) view.findViewById(R.id.editText_borrar);
         return view;
     }
 
@@ -45,8 +51,26 @@ public class BorrarFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(getContext(), MainInicio.class);
-                startActivity(intent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("¿DESEA ELIMINAR " + titulo.getText().toString() + " ?").setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(Db.eliminarAlbum(getContext(),titulo.getText().toString())){
+                            Toast.makeText(getContext(), "BORRADO CORRECTO", Toast.LENGTH_SHORT).show();
+                            titulo.setText(" ");
+                            Intent intent = new Intent(getContext(), MainInicio.class);
+                            startActivity(intent);
+                        }else{
+                            titulo.setText(" ");
+                            Toast.makeText(getContext(), "ERROR", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
 
             }
         });

@@ -5,7 +5,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
@@ -24,7 +27,7 @@ public class MainInicio extends AppCompatActivity {
     //RecyclerView listaAlbumes;
     //ArrayList<Albumes> listaArrayAlbumes;
 
-    private TextView text1, text2;
+    private TextView text1, text2, textUsuario;
     private ImageView fondoVerde;
     private LottieAnimationView logo;
     private GoogleSignInOptions gso;
@@ -51,10 +54,19 @@ public class MainInicio extends AppCompatActivity {
         text2 = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
+        textUsuario = findViewById(R.id.textUsuario);
         //listaAlbumes = findViewById(R.id.lista_albumes);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this,gso);
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+
+        if (acct != null) {
+            String nombre = acct.getEmail();
+            Uri foto = acct.getPhotoUrl();
+            Usuario.crearusuario(nombre);
+        }
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
@@ -78,14 +90,11 @@ public class MainInicio extends AppCompatActivity {
                     Intent intent = new Intent(MainInicio.this, MainActivity.class);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
 
-                    //Db.clo();
-
                     //cerrar sesion google
                     gsc.signOut().addOnCompleteListener(task -> {
-                        //finish();
+                        finish();
                         startActivity(intent,options.toBundle());
                     });
-
                     //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
                     Toast.makeText(this, "SESIÓN CERRADA", Toast.LENGTH_SHORT).show();
                     break;
@@ -94,6 +103,7 @@ public class MainInicio extends AppCompatActivity {
             return true;
         });
 
+        textUsuario.setText(Usuario.getUsuario());
     }
 
 }
