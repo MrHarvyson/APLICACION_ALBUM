@@ -6,12 +6,15 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.media.MediaPlayer;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
+import com.example.proyecto.fragment.AcercaFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -29,6 +32,8 @@ public class MainInicio extends AppCompatActivity {
     private LottieAnimationView logo;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
+
+    private MediaPlayer mp; //para reproducir audio
 
 
     @Override
@@ -63,17 +68,23 @@ public class MainInicio extends AppCompatActivity {
                 case R.id.lista:
                     navController.navigate(R.id.listaFragment);
                     //replaceFragment(new ListaFragment());
+                    reproducirMusica(R.id.lista);
                     break;
                 case R.id.acerca:
                     navController.navigate(R.id.acercaFragment);
+                    reproducirMusica(R.id.acerca);
                     break;
                 case R.id.anadir:
                     navController.navigate(R.id.crearFragment);
+                    reproducirMusica(R.id.anadir);
                     break;
                 case R.id.borrar:
                     navController.navigate(R.id.borrarFragment);
+                    reproducirMusica(R.id.borrar);
                     break;
                 case R.id.salir:
+                    reproducirMusica(R.id.salir);
+
                     Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
                     Intent intent = new Intent(MainInicio.this, MainActivity.class);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
@@ -96,4 +107,17 @@ public class MainInicio extends AppCompatActivity {
 
     }
 
+    //reproduce la musica en bucle en la pantalla Acerca de y lo para en las demás
+    private void reproducirMusica(int id){
+        if (id != R.id.acerca) {
+            if (mp != null) {
+                mp.stop();
+                mp = null;
+            }
+        } else {
+            mp = MediaPlayer.create(MainInicio.this, R.raw.musica_acerca);
+            mp.setLooping(true);
+            mp.start();
+        }
+    }
 }
