@@ -7,6 +7,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.squareup.picasso.Picasso;
 
 
 public class MainInicio extends AppCompatActivity {
@@ -28,7 +30,7 @@ public class MainInicio extends AppCompatActivity {
     //ArrayList<Albumes> listaArrayAlbumes;
 
     private TextView text1, text2, textUsuario;
-    private ImageView fondoVerde;
+    private ImageView fondoVerde,imgFoto;
     private LottieAnimationView logo;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
@@ -55,22 +57,26 @@ public class MainInicio extends AppCompatActivity {
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
         textUsuario = findViewById(R.id.textUsuario);
+        imgFoto = findViewById(R.id.imgFoto);
         //listaAlbumes = findViewById(R.id.lista_albumes);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gsc = GoogleSignIn.getClient(this,gso);
+        gsc = GoogleSignIn.getClient(this, gso);
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
+        Uri foto = null;
         if (acct != null) {
             String nombre = acct.getEmail();
-            Uri foto = acct.getPhotoUrl();
+            foto = acct.getPhotoUrl();
             Usuario.crearusuario(nombre);
         }
 
+        Picasso.get().load(foto).into(imgFoto);
+
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
 
                 case R.id.lista:
                     navController.navigate(R.id.listaFragment);
@@ -93,7 +99,7 @@ public class MainInicio extends AppCompatActivity {
                     //cerrar sesion google
                     gsc.signOut().addOnCompleteListener(task -> {
                         finish();
-                        startActivity(intent,options.toBundle());
+                        startActivity(intent, options.toBundle());
                     });
                     //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
                     Toast.makeText(this, "SESIÓN CERRADA", Toast.LENGTH_SHORT).show();
@@ -104,6 +110,11 @@ public class MainInicio extends AppCompatActivity {
         });
 
         textUsuario.setText(Usuario.getUsuario());
+    }
+
+    public void intoSesion(View view){
+        Intent intent = new Intent(MainInicio.this, MainPerfil.class);
+        startActivity(intent);
     }
 
 }
