@@ -5,18 +5,18 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.media.MediaPlayer;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
-import com.example.proyecto.fragment.AcercaFragment;
+import com.example.proyecto.db.Db;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -119,7 +119,14 @@ public class MainInicio extends AppCompatActivity {
             return true;
         });
 
+
+        //nombre de usuario
         textUsuario.setText(Usuario.getUsuario());
+        //imagen de usuario
+
+        byte[] bytess = Db.seleccionarUsuario(MainInicio.this,Usuario.getUsuario());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytess,0,bytess.length);
+        imgFoto.setImageBitmap(bitmap);
     }
 
     public void intoSesion(View view){

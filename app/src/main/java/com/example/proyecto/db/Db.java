@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -27,7 +30,7 @@ public class Db extends SQLiteOpenHelper {
     //crear tablas
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT NOT NULL, contrasena TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT NOT NULL, contrasena TEXT NOT NULL, avatar BLOB NOT NULL)");
         db.execSQL("CREATE TABLE " + TABLA_ALBUMES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, discografica TEXT NOT NULL)");
     }
 
@@ -46,7 +49,7 @@ public class Db extends SQLiteOpenHelper {
 
 
     //crear usuarios
-    public static boolean crearUsuario(Context context, String nombre, String contrasena) {
+    public static boolean crearUsuario(Context context, String nombre, String contrasena, byte[] avatar) {
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
         boolean correcto = false;
@@ -55,6 +58,7 @@ public class Db extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put("nombre", nombre);
             values.put("contrasena", contrasena);
+            values.put("avatar",avatar);
             dbData.insert(TABLA_USUARIOS, null, values);
             correcto = true;
         } catch (Exception ex) {
@@ -147,6 +151,23 @@ public class Db extends SQLiteOpenHelper {
             dbData.close();
         }
         return correcto;
+    }
+
+    //seleccionar usuario
+    public static byte[] seleccionarUsuario(Context context, String nombre) {
+        Db db = new Db(context);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+        ImageView foto = null;
+        Bitmap bitmap = null;
+
+        Cursor cursor = dbData.rawQuery("select * from " + TABLA_USUARIOS + " where nombre = '" + nombre + "'", null);
+        boolean correcto = false;
+        byte[] image = new byte[0];
+        while (cursor.moveToNext()) {
+            image = cursor.getBlob(3);
+        }
+
+        return image;
     }
 
     //consulta de usuario

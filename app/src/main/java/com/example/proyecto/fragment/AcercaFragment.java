@@ -14,7 +14,6 @@ import com.example.proyecto.R;
 
 public class AcercaFragment extends Fragment {
 
-    private Button botonLista, botonAgregar, botonBorrar, botonVersion, botonInfo;
     private TextView descripcion;
 
     @Override
@@ -48,24 +47,9 @@ public class AcercaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_acerca, container, false);
         // A partir de la vista mandas a traer los botones correspondientes.
         descripcion = view.findViewById(R.id.textView_acerca_descr);
-        botonLista = view.findViewById(R.id.btn_acerca_lista);
-        botonAgregar = view.findViewById(R.id.btn_acerca_agregar);
-        botonBorrar = view.findViewById(R.id.btn_acerca_borrar);
-        botonVersion = view.findViewById(R.id.btn_acerca_version);
-        botonInfo = view.findViewById(R.id.btn_acerca_info);
         //Esta lógica se replica para los demas botones.
-        botonLista.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Cambias el contenido del TextView
-                String mensaje; //= getString(R.string.hello);
-                descripcion.setText(mensaje = getString(R.string.texto_acerca_lista));
-            }
-        });
+
         return view;
-
-
-
 
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_acerca, container, false);
