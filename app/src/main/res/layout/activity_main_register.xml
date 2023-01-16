@@ -136,4 +136,19 @@
         app:layout_constraintTop_toBottomOf="@+id/animation_view"
         app:layout_constraintVertical_bias="0.58000004" />
 
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/btn_camera"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="camera"
+        android:src="@drawable/camera"
+        app:civ_border_color="@color/verde"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/textUsu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgFondoVerde" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

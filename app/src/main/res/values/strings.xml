@@ -23,7 +23,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="texto_nombre">Álvaro Astilleros y José Moreno</string>
-    <string name="texto_bio">José ha desarrollado una exitosa carrera en\ndiseño 3D a lo largo de 9 años.\nÁlvaro es una voz autorizada en el mundo de\nla publicidad y el marketing.\nTras estudiar juntos DAM afrontan un nuevo\nreto y aúnan su \"know-how\" para desarrollar\nuna novedosa aplicación de música.</string>
+    <string name="texto_bio">José ha desarrollado una exitosa carrera en diseño 3D a lo largo de 9 años. Álvaro es una voz autorizada en el mundo de la publicidad y el marketing.Tras estudiar juntos DAM afrontan un nuevo reto y aúnan su \"know-how\" para desarrollar una novedosa aplicación de música.</string>
     <string name="titulo_caracteristicas">CARACTERÍSTICAS DE LA APP</string>
     <string name="texto_acerca_lista">En la sección Lista podrás consultar todos los álbumes que hayas\nagregado en tu perfil.</string>
     <string name="texto_acerca_agregar">En la sección de Agregar podrás elegir\nlos álbumes que quieres añadir a tu lista\nespecificando título, autor y discográfica.\nDespués solo tienes que presionar el botón\nde agregar.</string>

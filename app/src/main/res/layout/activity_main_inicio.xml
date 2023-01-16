@@ -92,8 +92,8 @@
 
         <Button
             android:id="@+id/btnInto"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/into_sesion"
             android:onClick="intoSesion"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:textColor="@color/verde"
-            android:textSize="20sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/imgFoto"
             app:layout_constraintStart_toEndOf="@+id/imgFoto" />
 
