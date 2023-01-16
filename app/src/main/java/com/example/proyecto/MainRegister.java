@@ -7,6 +7,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class MainRegister extends AppCompatActivity {
     private ImageView fondoVerde;
     private LottieAnimationView logo;
     private CircleImageView avatar;
+    private boolean hay=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class MainRegister extends AppCompatActivity {
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hay = true;
                 ImagePicker.Companion.with(MainRegister.this)
                         .crop()
                         .compress(1024)
@@ -85,13 +88,16 @@ public class MainRegister extends AppCompatActivity {
     }
 
     public void registrar(View view) {
+        if(!hay){
+            avatar.setImageDrawable(getResources().getDrawable(R.drawable.user2));
+        }
+
 
         if (!Db.consultaUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString())) {
             if (textContrasena.getText().toString().equals(textRecontrasena.getText().toString())) {
 
                 if (Db.crearUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString(), ImageViewtoBite(avatar))) {
                     Toast.makeText(this, "USUARIO CREADO", Toast.LENGTH_SHORT).show();
-
                     Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
                     Intent intent = new Intent(MainRegister.this, MainActivity.class);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainRegister.this, anim.animacion());
