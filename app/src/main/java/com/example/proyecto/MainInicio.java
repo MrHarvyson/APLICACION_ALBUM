@@ -74,9 +74,10 @@ public class MainInicio extends AppCompatActivity {
             String nombre = acct.getEmail();
             foto = acct.getPhotoUrl();
             Usuario.crearusuario(nombre);
+            Picasso.get().load(foto).into(imgFoto);
         }
 
-        Picasso.get().load(foto).into(imgFoto);
+
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
@@ -108,7 +109,7 @@ public class MainInicio extends AppCompatActivity {
 
                     //cerrar sesion google
                     gsc.signOut().addOnCompleteListener(task -> {
-                        finish();
+                        //finish();
                         startActivity(intent, options.toBundle());
                     });
                     //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
@@ -119,14 +120,11 @@ public class MainInicio extends AppCompatActivity {
             return true;
         });
 
-
+        //arreglar foto de google desaparece por tener esto crear condicion
         //nombre de usuario
         textUsuario.setText(Usuario.getUsuario());
         //imagen de usuario
-
-        byte[] bytess = Db.seleccionarUsuario(MainInicio.this,Usuario.getUsuario());
-        Bitmap bitmap = BitmapFactory.decodeByteArray(bytess,0,bytess.length);
-        imgFoto.setImageBitmap(bitmap);
+        imgFoto.setImageBitmap(Db.seleccionarUsuario(MainInicio.this,Usuario.getUsuario()));
     }
 
     public void intoSesion(View view){

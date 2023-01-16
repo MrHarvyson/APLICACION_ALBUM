@@ -30,7 +30,7 @@ public class Db extends SQLiteOpenHelper {
     //crear tablas
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT NOT NULL, contrasena TEXT NOT NULL, avatar BLOB NOT NULL)");
+        db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT NOT NULL, contrasena TEXT NOT NULL, avatar BLOB)");
         db.execSQL("CREATE TABLE " + TABLA_ALBUMES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, discografica TEXT NOT NULL)");
     }
 
@@ -154,7 +154,7 @@ public class Db extends SQLiteOpenHelper {
     }
 
     //seleccionar usuario
-    public static byte[] seleccionarUsuario(Context context, String nombre) {
+    public static Bitmap seleccionarUsuario(Context context, String nombre) {
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
         ImageView foto = null;
@@ -166,8 +166,9 @@ public class Db extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             image = cursor.getBlob(3);
         }
-
-        return image;
+        byte[] bytess = image;
+        bitmap = BitmapFactory.decodeByteArray(bytess,0,bytess.length);
+        return bitmap;
     }
 
     //consulta de usuario

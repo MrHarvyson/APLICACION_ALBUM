@@ -115,13 +115,13 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgFoto"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/user2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:civ_border_color="@color/verde"
             app:civ_border_width="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnInto"
+            app:layout_constraintHorizontal_bias="0.03"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 <!--
