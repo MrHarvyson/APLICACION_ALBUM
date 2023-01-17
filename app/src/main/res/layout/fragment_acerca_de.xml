@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.AcercaFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgAcercaDe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/as"
+            app:civ_border_color="@color/verde"
+            app:civ_border_width="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textNombres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/aldrich"
+            android:text="@string/texto_nombre"
+            android:textColor="@color/verde"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textBio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgAcercaDe" />
+
+        <TextView
+            android:id="@+id/textBio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/aldrich"
+            android:justificationMode="inter_word"
+            android:text="@string/texto_bio"
+            android:textAlignment="viewStart"
+            android:textColor="@color/grisClaro"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textCaracteristicas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNombres" />
+
+        <TextView
+            android:id="@+id/textCaracteristicas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/aldrich"
+            android:text="@string/titulo_caracteristicas"
+            android:textColor="@color/verde"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textBio" />
+
+        <TextView
+            android:id="@+id/textView_acerca_descr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="160dp"
+            android:fontFamily="@font/aldrich"
+            android:text="TextView"
+            android:textColor="@color/grisClaro"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_lista"
+            android:layout_width="389dp"
+            android:layout_height="374dp"
+            android:layout_marginStart="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
