@@ -15,6 +15,15 @@
             app:destination="@id/acercaFragment" />
     </fragment>
     <fragment
+        android:id="@+id/acercaFragment"
+        android:name="com.example.proyecto.fragment.AcercaFragment"
+        android:label="fragment_acerca"
+        tools:layout="@layout/fragment_acerca_de" >
+        <action
+            android:id="@+id/action_acercaFragment_to_crearFragment"
+            app:destination="@id/crearFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/borrarFragment"
         android:name="com.example.proyecto.fragment.BorrarFragment"
         android:label="fragment_borrar"
@@ -27,14 +36,5 @@
         <action
             android:id="@+id/action_crearFragment_to_borrarFragment"
             app:destination="@id/borrarFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/acercaFragment"
-        android:name="com.example.proyecto.fragment.AcercaFragment"
-        android:label="fragment_acerca"
-        tools:layout="@layout/fragment_acerca" >
-        <action
-            android:id="@+id/action_acercaFragment_to_crearFragment"
-            app:destination="@id/crearFragment" />
     </fragment>
 </navigation>
