@@ -1,9 +1,16 @@
 package com.example.proyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.TaskStackBuilder;
 
 import android.app.ActivityOptions;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -22,6 +29,9 @@ public class MainLogin extends AppCompatActivity {
     private EditText textContrasena;
     private ImageView fondoVerde;
     private LottieAnimationView logo;
+    private final static String CHANNEL_ID = "canal";
+
+    private PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +51,16 @@ public class MainLogin extends AppCompatActivity {
     }
 
     public void entrar(View view){
+
         try{
             if(Db.consultaUsuario(MainLogin.this, textUsuario.getText().toString(),textContrasena.getText().toString())){
+                //crearNotificacion();
                 Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
                 Intent intent = new Intent(this, MainInicio.class);
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, anim.animacion());
                 Usuario.crearusuario(textUsuario.getText().toString());
                 startActivity(intent,options.toBundle());
+
             }else{
                 Toast.makeText(this, "CONTRASEÑA/USUARIO INCORRECTO", Toast.LENGTH_SHORT).show();
                 textContrasena.setText("");
@@ -57,5 +70,6 @@ public class MainLogin extends AppCompatActivity {
         }
 
     }
+
 
 }

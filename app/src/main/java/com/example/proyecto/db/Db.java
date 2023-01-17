@@ -31,7 +31,7 @@ public class Db extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT NOT NULL, contrasena TEXT NOT NULL, avatar BLOB)");
-        db.execSQL("CREATE TABLE " + TABLA_ALBUMES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, discografica TEXT NOT NULL)");
+        db.execSQL("CREATE TABLE " + TABLA_ALBUMES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, discografica TEXT NOT NULL, portada BLOB)");
     }
 
     //crear BD
@@ -73,7 +73,7 @@ public class Db extends SQLiteOpenHelper {
     }
 
     //crear albumes
-    public static boolean crearAlbum(Context context, String titulo, String autor, String discografica) {
+    public static boolean crearAlbum(Context context, String titulo, String autor, String discografica, byte[] portada) {
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
         boolean correcto = false;
@@ -84,6 +84,7 @@ public class Db extends SQLiteOpenHelper {
                 values.put("titulo", titulo);
                 values.put("autor", autor);
                 values.put("discografica", discografica);
+                values.put("portada",portada);
 
                 dbData.insert(TABLA_ALBUMES, null, values);
                 correcto = true;
@@ -252,6 +253,7 @@ public class Db extends SQLiteOpenHelper {
     }
 
 
+    //creamos una lista que guarde todos los álbumes que tenemos en la base de datos
     public ArrayList<Albumes> mostrarAlbumes(Context context) {
 
         Db db = new Db(context);
@@ -266,10 +268,11 @@ public class Db extends SQLiteOpenHelper {
         if (cursorAlbumes.moveToFirst()) {
             do {
                 album = new Albumes();
-                //album.setId(cursorAlbumes.getInt(0));
+                //album.setId(cursorAlbumes.getInt(0)); //no hace falta este dato por ahora
                 album.setTitulo(cursorAlbumes.getString(1));
                 album.setAutor(cursorAlbumes.getString(2));
                 album.setDiscografica(cursorAlbumes.getString(3));
+                album.setPortada(cursorAlbumes.getBlob(4));
                 listaAlbumes.add(album);
             } while (cursorAlbumes.moveToNext());
         }
