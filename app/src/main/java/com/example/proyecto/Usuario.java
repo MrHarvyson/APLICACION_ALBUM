@@ -1,8 +1,13 @@
 package com.example.proyecto;
 
+import android.widget.ImageView;
+
+import com.example.proyecto.db.Db;
+
 public class Usuario {
     private static String nombre;
     private String contraseña;
+    private ImageView foto;
 
 
 
@@ -11,12 +16,13 @@ public class Usuario {
     public Usuario(String nombre) {
         this.nombre = nombre;
     }
-    public Usuario(String nombre, String contraseña) {
+    public Usuario(String nombre, ImageView foto) {
         this.nombre = nombre;
-        this.contraseña = contraseña;
+        this.foto = foto;
     }
 
-    public String getNombre() {
+
+    public static String getNombre() {
         return nombre;
     }
 
@@ -36,8 +42,5 @@ public class Usuario {
         Usuario usuario = new Usuario(nombre);
     }
 
-    public static String getUsuario(){
-        return nombre;
-    }
 }
 

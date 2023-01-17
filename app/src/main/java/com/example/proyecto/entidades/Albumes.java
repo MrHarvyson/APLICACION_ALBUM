@@ -5,6 +5,7 @@ public class Albumes {
     private String titulo;
     private String autor;
     private String discografica;
+    private byte[] portada;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class Albumes {
 
     public void setDiscografica(String discografica) {
         this.discografica = discografica;
+    }
+
+    public byte[] getPortada() {
+        return portada;
+    }
+
+    public void setPortada(byte[] portada) {
+        this.portada = portada;
     }
 }

@@ -23,8 +23,6 @@ public class ListaFragment extends Fragment {
     private ArrayList<Albumes> listaArrayAlbumes;
 
 
-
-    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,8 +34,6 @@ public class ListaFragment extends Fragment {
         Db db = new Db(getContext());
         ListaAlbumesAdapter adapter = new ListaAlbumesAdapter(db.mostrarAlbumes(getContext()));
         listaAlbumes.setAdapter(adapter);
-
-
 
         return view;
 

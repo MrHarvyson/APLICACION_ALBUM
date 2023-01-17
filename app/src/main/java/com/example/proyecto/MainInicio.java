@@ -122,9 +122,9 @@ public class MainInicio extends AppCompatActivity {
 
         //arreglar foto de google desaparece por tener esto crear condicion
         //nombre de usuario
-        textUsuario.setText(Usuario.getUsuario());
+        textUsuario.setText(Usuario.getNombre());
         //imagen de usuario
-        imgFoto.setImageBitmap(Db.seleccionarUsuario(MainInicio.this,Usuario.getUsuario()));
+        imgFoto.setImageBitmap(Db.seleccionarUsuario(MainInicio.this,Usuario.getNombre()));
     }
 
     public void intoSesion(View view){

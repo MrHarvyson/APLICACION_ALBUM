@@ -60,7 +60,7 @@ public class MainRegister extends AppCompatActivity {
             public void onClick(View v) {
                 hay = true;
                 ImagePicker.Companion.with(MainRegister.this)
-                        .crop()
+                        .cropSquare()
                         .compress(1024)
                         .maxResultSize(1080, 1080)
                         .start(101);
