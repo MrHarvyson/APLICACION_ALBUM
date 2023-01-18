@@ -7,13 +7,9 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +19,6 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.db.Db;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -35,7 +30,7 @@ public class MainRegister extends AppCompatActivity {
     private ImageView fondoVerde;
     private LottieAnimationView logo;
     private CircleImageView avatar;
-    private boolean hay=false;
+    private boolean hay_foto =false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +53,7 @@ public class MainRegister extends AppCompatActivity {
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hay = true;
+                hay_foto = true;
                 ImagePicker.Companion.with(MainRegister.this)
                         .cropSquare()
                         .compress(1024)
@@ -88,13 +83,14 @@ public class MainRegister extends AppCompatActivity {
     }
 
     public void registrar(View view) {
-        if(!hay){
-            avatar.setImageDrawable(getResources().getDrawable(R.drawable.user2));
-        }
 
 
         if (!Db.consultaUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString())) {
             if (textContrasena.getText().toString().equals(textRecontrasena.getText().toString())) {
+
+                if(!hay_foto){
+                    avatar.setImageDrawable(getResources().getDrawable(R.drawable.user2));
+                }
 
                 if (Db.crearUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString(), ImageViewtoBite(avatar))) {
                     Toast.makeText(this, "USUARIO CREADO", Toast.LENGTH_SHORT).show();
