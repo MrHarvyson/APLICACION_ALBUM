@@ -3,23 +3,23 @@
 
     <item
         android:id = "@+id/lista"
-        android:title="Lista"
+        android:title="@string/icono_lista"
         android:icon="@drawable/list"/>
     <item
         android:id = "@+id/acerca"
-        android:title="Acerca de"
+        android:title="@string/icono_acerca"
         android:icon="@drawable/informacion" />
     <item
         android:id = "@+id/anadir"
-        android:title="Añadir"
+        android:title="@string/icono_agregar"
         android:icon="@drawable/mas"/>
     <item
         android:id = "@+id/borrar"
-        android:title="Borrar"
+        android:title="@string/icono_borrar"
         android:icon="@drawable/basura"/>
     <item
         android:id = "@+id/salir"
-        android:title="Salir"
+        android:title="@string/icono_salir"
         android:icon="@drawable/cerrar_sesion2_verde"/>
 
 </menu>
