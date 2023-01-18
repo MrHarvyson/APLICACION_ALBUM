@@ -9,6 +9,12 @@
         <string name="boton_borrar">DELETE</string>
         <string name="boton_agregar">ADD</string>
 
+        <string name="icono_lista">List</string>
+        <string name="icono_acerca">About</string>
+        <string name="icono_agregar">Add</string>
+        <string name="icono_borrar">Delete</string>
+        <string name="icono_salir">Exit</string>
+
         <string name="texto_titulo">TITLE:</string>
         <string name="texto_autor">SONGWRITER:</string>
         <string name="texto_discografica">RECORD LABEL:</string>
@@ -26,10 +32,15 @@
         <string name="texto_nombre">Álvaro Astilleros &amp; José Moreno</string>
         <string name="texto_bio">José has developed a successful career in\n3D design for 9 years.\nÁlvaro is an authorised voice in the world\nof advertising and marketing.\nAfter studying DAM together they pursue\na new challenge and put together their\n\"know-how\" to develop an innovative\nmusic application.</string>
         <string name="titulo_caracteristicas">APP\'s FEATURES</string>
-        <string name="texto_acerca_lista">On List section you can find all the\nalbums that you have already added\nin your profile.</string>
-        <string name="texto_acerca_agregar">On Add section you can choose the\nalbums that you want to add to your\nlist specifying its title, author and\nrecord label. After that you just have\nto press the add button.</string>
-        <string name="texto_acerca_borrar">On Delete section you can select an album\nthat you have already saved by typing its\ntitle and delete it by pressing the delete\nbutton.</string>
-        <string name="texto_acerca_version">Version 1.10.4.2.3.15\nLast update 15/01/2023\nSO required Android</string>
-        <string name="texto_acerca_info">We bring closer to you magical moments within\nyour memory. TuneHub is a tool that allows you\nto save your favourite albums. Has a friend\nrecommended you an album and you want to\nremember to buy it later? Download TuneHub,\nsave it and stop worrying about that uncomfortable\nsensation of forgetting something and have to\nremember it!!</string>
+        <string name="titulo_recycle_lista">List</string>
+        <string name="titulo_recycle_agregar">Add</string>
+        <string name="titulo_recycle_borrar">Delete</string>
+        <string name="titulo_recycle_version">Version</string>
+        <string name="titulo_recycle_info">Info</string>
+        <string name="texto_recycle_lista">On List section you can find all the albums that you have already added in your profile.</string>
+        <string name="texto_recycle_agregar">On Add section you can choose the albums that you want to add to your list specifying its title, author and record label. After that you just have to press the add button.</string>
+        <string name="texto_recycle_borrar">On Delete section you can select an album that you have already saved by typing its title and delete it by pressing the delete button.</string>
+        <string name="texto_recycle_version">Version 1.10.4.2.3.15\nLast update 15/01/2023\nSO required Android</string>
+        <string name="texto_recycle_info">We bring closer to you magical moments within your memory. TuneHub is a tool that allows you to save your favourite albums. Has a friend recommended you an album and you want to remember to buy it later? Download TuneHub, save it and stop worrying about that uncomfortable sensation of forgetting something and have to remember it!!</string>
 
 </resources>

@@ -64,26 +64,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textBio" />
 
-        <TextView
-            android:id="@+id/textView_acerca_descr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="160dp"
-            android:fontFamily="@font/aldrich"
-            android:text="TextView"
-            android:textColor="@color/grisClaro"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_lista"
-            android:layout_width="389dp"
-            android:layout_height="374dp"
-            android:layout_marginStart="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
+            android:id="@+id/lista_caracteristicas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCaracteristicas" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
