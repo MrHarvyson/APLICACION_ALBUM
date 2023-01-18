@@ -20,7 +20,7 @@ import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView text1, text2; //texto1 --> San Fernando  texto2 --> Biblioteca publica
+    private TextView text1, text2;
     private ImageView fondoVerde;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(MainActivity.this, gso);
-
 
     }
 

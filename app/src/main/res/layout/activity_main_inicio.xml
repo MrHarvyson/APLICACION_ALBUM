@@ -84,8 +84,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -108,8 +109,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Usuario"
             android:textColor="@color/verde"
-            android:textSize="15sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/imgFoto"
             app:layout_constraintStart_toEndOf="@+id/imgFoto" />
 
@@ -121,10 +124,10 @@
             app:civ_border_width="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnInto"
-            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-<!--
+        <!--
         <ImageView
             android:id="@+id/imgFoto"
             android:layout_width="75dp"
