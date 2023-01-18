@@ -32,12 +32,12 @@ public class MainInicio extends AppCompatActivity {
     //ArrayList<Albumes> listaArrayAlbumes;
 
     private TextView text1, text2, textUsuario;
-    private ImageView fondoVerde,imgFoto;
+    private ImageView fondoVerde,imgFoto, volumen;
     private LottieAnimationView logo;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
-
     private MediaPlayer mp; //para reproducir audio
+    boolean isOff = true;
 
 
     @Override
@@ -62,7 +62,10 @@ public class MainInicio extends AppCompatActivity {
         fondoVerde = findViewById(R.id.imgFondoVerde);
         textUsuario = findViewById(R.id.textUsuario);
         imgFoto = findViewById(R.id.imgFoto);
+        volumen = findViewById(R.id.volumen_click);
+        volumen.setVisibility(View.INVISIBLE);
         //listaAlbumes = findViewById(R.id.lista_albumes);
+
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this, gso);
@@ -77,6 +80,23 @@ public class MainInicio extends AppCompatActivity {
             Picasso.get().load(foto).into(imgFoto);
         }
 
+        /* SOLUCION MUTE EN PROGRESO
+        volumen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (isOff){
+
+                    volumen.setImageResource(R.drawable.volumen_off);
+                    isOff = false;
+                } else {
+
+                    volumen.setImageResource(R.drawable.volumen_on);
+                    isOff = true;
+                }
+            }
+        });
+*/
 
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -134,15 +154,56 @@ public class MainInicio extends AppCompatActivity {
 
     //reproduce la musica en bucle en la pantalla Acerca de y lo para en las demás
     private void reproducirMusica(int id){
+        /* SOLUCION EN PROGRESO
+        if(id == R.id.acerca) {
+            mp = MediaPlayer.create(MainInicio.this, R.raw.musica_acerca);
+            mp.setLooping(true);
+
+            volumen.setVisibility(View.VISIBLE);
+            if (!isOff) {
+                mp.pause();
+            } else {
+                mp.start();
+            }
+
+
+        } else {
+            if (mp != null) {
+                mp.pause();
+            }
+        }
+         */
+
+
         if (id != R.id.acerca) {
             if (mp != null) {
                 mp.stop();
                 mp = null;
+                volumen.setImageResource(R.drawable.volumen_on);
+                volumen.setVisibility(View.INVISIBLE);
             }
         } else {
             mp = MediaPlayer.create(MainInicio.this, R.raw.musica_acerca);
             mp.setLooping(true);
             mp.start();
+            volumen.setVisibility(View.VISIBLE);
+            volumen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (isOff){
+                        mp.pause();
+                        volumen.setImageResource(R.drawable.volumen_off);
+                        isOff = false;
+                    } else {
+                        mp.start();
+                        volumen.setImageResource(R.drawable.volumen_on);
+                        isOff = true;
+                    }
+                }
+            });
         }
+
+
     }
 }
