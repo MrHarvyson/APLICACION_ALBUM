@@ -122,7 +122,7 @@ public class CrearFragment extends Fragment {
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
                     .setSmallIcon(R.drawable.icon_album)
-                    .setContentTitle("TUNEHUB")
+                    .setContentTitle(getString(R.string.nombre_aplicacion))
                     .setContentText(texto)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setAutoCancel(true)
