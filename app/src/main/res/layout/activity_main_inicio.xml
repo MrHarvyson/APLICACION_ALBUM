@@ -18,6 +18,13 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         app:navGraph="@navigation/nav_graph" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/myNavHost" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"

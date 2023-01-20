@@ -13,11 +13,11 @@
         android:layout_width="200dp"
         android:layout_height="48dp"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/boton_verde_lleno"
+        android:background="@drawable/boton_rojo_vacio"
         android:fontFamily="@font/aldrich"
         android:onClick="borrar"
         android:text="@string/boton_borrar"
-        android:textColor="@color/negro"
+        android:textColor="@color/rojo"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,17 +30,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/verde"
+        android:backgroundTint="@color/rojo"
         android:ems="10"
         android:fontFamily="@font/aldrich"
         android:hint="@string/entrada_titulo"
         android:inputType="textPersonName"
-        android:textColorHint="@color/verde"
+        android:textColorHint="@color/rojo"
         app:layout_constraintBottom_toTopOf="@+id/btn_borrar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/animation_view"
+        app:layout_constraintVertical_bias="0.26" />
 
     <TextView
         android:id="@+id/textErrorBorrar"
@@ -52,5 +52,18 @@
         app:layout_constraintEnd_toEndOf="@+id/btn_borrar"
         app:layout_constraintStart_toStartOf="@+id/btn_borrar"
         app:layout_constraintTop_toBottomOf="@+id/btn_borrar" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:transitionName="album"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/clear" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
