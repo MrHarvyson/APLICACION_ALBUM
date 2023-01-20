@@ -78,8 +78,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/btn_portada"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:onClick="portada"
         android:src="@drawable/camera"
         app:civ_border_color="@color/verde"

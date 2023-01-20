@@ -1,13 +1,20 @@
 package com.example.proyecto.fragment;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 import android.app.ActivityOptions;
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -27,6 +34,7 @@ import com.example.proyecto.db.Db;
 public class BorrarFragment extends Fragment {
     private Button borrar;
     private EditText titulo;
+    private final static String CHANNEL_ID = "canal";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +65,15 @@ public class BorrarFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         if(Db.eliminarAlbum(getContext(),titulo.getText().toString())){
                             Toast.makeText(getContext(), "BORRADO CORRECTO", Toast.LENGTH_SHORT).show();
+                            crearNotificacion("Álbum " + titulo.getText().toString() + " borrado.");
                             titulo.setText("");
                             titulo.setHint(getString(R.string.entrada_titulo));
                             Intent intent = new Intent(getContext(), MainInicio.class);
                             startActivity(intent);
                         }else{
+                            Toast.makeText(getContext(), "Álbum " + titulo.getText().toString() + " no existe.", Toast.LENGTH_SHORT).show();
                             titulo.setText("");
                             titulo.setHint(getString(R.string.entrada_titulo));
-                            Toast.makeText(getContext(), "ERROR", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -76,6 +85,41 @@ public class BorrarFragment extends Fragment {
 
             }
         });
+    }
+
+    private void crearNotificacion(String titulo){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,"NEW", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = (NotificationManager) getContext().getSystemService(NOTIFICATION_SERVICE);
+            manager.createNotificationChannel(channel);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
+                    .setSmallIcon(R.drawable.icon_album)
+                    .setContentTitle(getString(R.string.app_name))
+                    .setContentText(titulo)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true)
+                    .setOngoing(false)
+                    .setContentIntent(PendingIntent.getActivity(getContext().getApplicationContext(), 0,new Intent(),PendingIntent.FLAG_IMMUTABLE)); //eliminar al tocar
+
+            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext().getApplicationContext());
+            managerCompat.notify(1,builder.build());
+
+        }else{
+            //setPendingIntent(MainInicio.class);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
+                    .setSmallIcon(R.drawable.icon_album)
+                    .setContentTitle(getString(R.string.app_name))
+                    .setContentText(titulo)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true)
+                    .setOngoing(false)
+                    .setContentIntent(PendingIntent.getActivity(getContext().getApplicationContext(), 0,new Intent(),PendingIntent.FLAG_IMMUTABLE)); //eliminar al tocar
+
+            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext().getApplicationContext());
+            managerCompat.notify(1,builder.build());
+        }
     }
 
 }
