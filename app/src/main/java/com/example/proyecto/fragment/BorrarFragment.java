@@ -60,14 +60,16 @@ public class BorrarFragment extends Fragment {
             public void onClick(View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage("¿DESEA ELIMINAR " + titulo.getText().toString() + " ?").setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                builder.setMessage(getString(R.string.notificacion_desea_eliminar) + " " + titulo.getText().toString() + " ?").setPositiveButton(getString(R.string.notificacion_si), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if(Db.eliminarAlbum(getContext(),titulo.getText().toString())){
+
                             Toast.makeText(getContext(), "BORRADO CORRECTO", Toast.LENGTH_SHORT).show();
                             crearNotificacion("Álbum " + titulo.getText().toString() + " borrado.");
                             titulo.setText("");
                             titulo.setHint(getString(R.string.entrada_titulo));
+
                             Intent intent = new Intent(getContext(), MainInicio.class);
                             startActivity(intent);
                         }else{

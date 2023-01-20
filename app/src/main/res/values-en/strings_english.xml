@@ -26,8 +26,7 @@
         <string name="entrada_titulo">ALBUM TITLE</string>
         <string name="entrada_autor">SONGWRITER</string>
         <string name="entrada_discografia">RECORD LABEL</string>
-        <!-- TODO: Remove or change this placeholder text -->
-        <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
         <string name="texto_nombre">Álvaro Astilleros &amp; José Moreno</string>
         <string name="texto_bio">José has developed a successful career in\n3D design for 9 years.\nÁlvaro is an authorised voice in the world\nof advertising and marketing.\nAfter studying DAM together they pursue\na new challenge and put together their\n\"know-how\" to develop an innovative\nmusic application.</string>
@@ -43,4 +42,18 @@
         <string name="texto_recycle_version">Version 1.10.4.2.3.15\nLast update 15/01/2023\nSO required Android</string>
         <string name="texto_recycle_info">We bring closer to you magical moments within your memory. TuneHub is a tool that allows you to save your favourite albums. Has a friend recommended you an album and you want to remember to buy it later? Download TuneHub, save it and stop worrying about that uncomfortable sensation of forgetting something and have to remember it!!</string>
 
+
+        <string name="notificacion_album">Album </string>
+        <string name="notificacion_album_creado"> created.</string>
+        <string name="notificacion_album_existe">already exists.</string>
+        <string name="notificacion_completar_campos">FILL ALL THE FIELDS</string>
+        <string name="notificacion_desea_eliminar">DELETE</string>
+        <string name="notificacion_si">YES</string>
+        <string name="notificacion_borrado">CONFIRMED DELETE</string>
+        <string name="notificacion_sesion">SESSION CLOSED</string>
+        <string name="notificacion_usuario">WRONG PASSWORD/USER</string>
+        <string name="usuario_creado">USER CREATED</string>
+        <string name="contrasena_diferente">PASSWORDS DON\'T MATCH</string>
+        <string name="usuario_existe">USER EXISTS</string>
+        <string name="texto_version">Version 1.10.4.2.3.15</string>
 </resources>

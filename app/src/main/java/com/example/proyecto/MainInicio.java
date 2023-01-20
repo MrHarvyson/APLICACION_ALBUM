@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +40,8 @@ public class MainInicio extends AppCompatActivity {
     private MediaPlayer mp; //para reproducir audio
     boolean iconON = true;
 
+    private Button btnInto;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,7 @@ public class MainInicio extends AppCompatActivity {
         imgFoto = findViewById(R.id.imgFoto);
         volumen = findViewById(R.id.volumen_click);
         volumen.setVisibility(View.INVISIBLE);
+        btnInto = findViewById(R.id.btnInto);
         //listaAlbumes = findViewById(R.id.lista_albumes);
 
 
@@ -107,18 +111,22 @@ public class MainInicio extends AppCompatActivity {
                     navController.navigate(R.id.listaFragment);
                     //replaceFragment(new ListaFragment());
                     reproducirMusica(R.id.lista);
+                    mostrarControles(R.id.lista);
                     break;
                 case R.id.acerca:
                     navController.navigate(R.id.acercaFragment);
                     reproducirMusica(R.id.acerca);
+                    mostrarControles(R.id.acerca);
                     break;
                 case R.id.anadir:
                     navController.navigate(R.id.crearFragment);
                     reproducirMusica(R.id.anadir);
+                    mostrarControles(R.id.anadir);
                     break;
                 case R.id.borrar:
                     navController.navigate(R.id.borrarFragment);
                     reproducirMusica(R.id.borrar);
+                    mostrarControles(R.id.borrar);
                     break;
                 case R.id.salir:
                     reproducirMusica(R.id.salir);
@@ -133,7 +141,7 @@ public class MainInicio extends AppCompatActivity {
                         startActivity(intent, options.toBundle());
                     });
                     //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
-                    Toast.makeText(this, "SESIÓN CERRADA", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.notificacion_sesion), Toast.LENGTH_SHORT).show();
                     break;
             }
 
@@ -169,7 +177,19 @@ public class MainInicio extends AppCompatActivity {
             }
             volumen.setVisibility(View.INVISIBLE);
         }
-
     }
 
+    private void mostrarControles(int id) {
+
+        if (id == R.id.acerca) {
+            textUsuario.setVisibility(View.INVISIBLE);
+            imgFoto.setVisibility(View.INVISIBLE);
+            btnInto.setVisibility(View.INVISIBLE);
+        } else {
+            textUsuario.setVisibility(View.VISIBLE);
+            imgFoto.setVisibility(View.VISIBLE);
+            btnInto.setVisibility(View.VISIBLE);
+        }
+
+    }
 }
