@@ -80,15 +80,16 @@ public class CrearFragment extends Fragment {
                     if(Db.crearAlbum(getContext(), titulo.getText().toString(),autor.getText().toString(), discografica.getText().toString(),ImageViewtoBite(portada))){
                         //Toast.makeText(getContext(), "HAY QUE PONER NOTIFICACION", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), MainInicio.class);
-                        startActivity(intent);
                         crearNotificacion("Álbum " + titulo.getText().toString() + " creado.");
+                        startActivity(intent);
                     }else {
                         //Toast.makeText(getContext(), "USUARIO REPETIDO", Toast.LENGTH_SHORT).show();
+
+                        portada.setImageDrawable(getResources().getDrawable(R.drawable.camera));
+                        crearNotificacion("El álbum " + titulo.getText().toString() + " ya existe.");
                         titulo.setText("");
                         autor.setText("");
                         discografica.setText("");
-                        portada.setImageDrawable(getResources().getDrawable(R.drawable.camera));
-                        crearNotificacion("El álbum " + titulo.getText().toString() + " ya existe.");
                     }
                 }else{
                     Toast.makeText(getContext(), "COMPLETE TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
@@ -118,12 +119,17 @@ public class CrearFragment extends Fragment {
         byte[] byteArray = stream.toByteArray();
         return byteArray;
     }
-    private void crearNotificacion(String texto){
+    private void crearNotificacion(String titulo){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,"NEW", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = (NotificationManager) getContext().getSystemService(NOTIFICATION_SERVICE);
+            manager.createNotificationChannel(channel);
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
                     .setSmallIcon(R.drawable.icon_album)
                     .setContentTitle("TUNEHUB")
-                    .setContentText(texto)
+                    .setContentText(titulo)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setAutoCancel(true)
                     .setOngoing(false)
@@ -132,6 +138,21 @@ public class CrearFragment extends Fragment {
             NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext().getApplicationContext());
             managerCompat.notify(1,builder.build());
 
+        }else{
+            //setPendingIntent(MainInicio.class);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
+                    .setSmallIcon(R.drawable.icon_album)
+                    .setContentTitle("TUNEHUB")
+                    .setContentText(titulo)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true)
+                    .setOngoing(false)
+                    .setContentIntent(PendingIntent.getActivity(getContext().getApplicationContext(), 0,new Intent(),PendingIntent.FLAG_IMMUTABLE)); //eliminar al tocar
+
+            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext().getApplicationContext());
+            managerCompat.notify(1,builder.build());
+        }
     }
+
 
 }
