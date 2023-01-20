@@ -27,7 +27,7 @@
     <string name="entrada_autor">AUTOR</string>
     <string name="entrada_discografia">DISCOGRAFÍA</string>
 
-
+    <string name="titulo_acerca">ACERCA DE</string>
     <string name="texto_nombre">Álvaro Astilleros y José Moreno</string>
     <string name="texto_bio">José ha desarrollado una exitosa carrera en diseño 3D a lo largo de 9 años. Álvaro es una voz autorizada en el mundo de la publicidad y el marketing.Tras estudiar juntos DAM afrontan un nuevo reto y aúnan su \"know-how\" para desarrollar una novedosa aplicación de música.</string>
     <string name="titulo_caracteristicas">CARACTERÍSTICAS DE LA APP</string>
