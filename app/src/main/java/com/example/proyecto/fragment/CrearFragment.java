@@ -90,6 +90,9 @@ public class CrearFragment extends Fragment {
                         titulo.setText("");
                         autor.setText("");
                         discografica.setText("");
+                        titulo.setHint(getString(R.string.entrada_titulo));
+                        autor.setHint(getString(R.string.entrada_autor));
+                        discografica.setHint(getString(R.string.entrada_discografia));
                     }
                 }else{
                     Toast.makeText(getContext(), "COMPLETE TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
@@ -128,7 +131,7 @@ public class CrearFragment extends Fragment {
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
                     .setSmallIcon(R.drawable.icon_album)
-                    .setContentTitle("TUNEHUB")
+                    .setContentTitle(getString(R.string.app_name))
                     .setContentText(titulo)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setAutoCancel(true)
@@ -142,7 +145,7 @@ public class CrearFragment extends Fragment {
             //setPendingIntent(MainInicio.class);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
                     .setSmallIcon(R.drawable.icon_album)
-                    .setContentTitle("TUNEHUB")
+                    .setContentTitle(getString(R.string.app_name))
                     .setContentText(titulo)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setAutoCancel(true)
