@@ -76,7 +76,7 @@ public class MainInicio extends AppCompatActivity {
 
         Uri foto = null;
         if (acct != null) {
-            String nombre = acct.getEmail();
+            String nombre = acct.getGivenName();
             foto = acct.getPhotoUrl();
             Usuario.crearusuario(nombre);
             Picasso.get().load(foto).into(imgFoto);
