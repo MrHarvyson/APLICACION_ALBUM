@@ -62,7 +62,7 @@ public class MainLogin extends AppCompatActivity {
                 startActivity(intent,options.toBundle());
 
             }else{
-                Toast.makeText(this, "CONTRASEÑA/USUARIO INCORRECTO", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.notificacion_usuario), Toast.LENGTH_SHORT).show();
                 textContrasena.setText("");
             }
         }catch (Exception ex){
