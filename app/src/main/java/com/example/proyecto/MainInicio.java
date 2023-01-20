@@ -3,10 +3,9 @@ package com.example.proyecto;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.media.MediaPlayer;
+
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
 import com.example.proyecto.db.Db;
@@ -32,18 +32,20 @@ public class MainInicio extends AppCompatActivity {
     //ArrayList<Albumes> listaArrayAlbumes;
 
     private TextView text1, text2, textUsuario;
-    private ImageView fondoVerde,imgFoto, volumen;
+    private ImageView fondoVerde, imgFoto, volumen;
     private LottieAnimationView logo;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
     private MediaPlayer mp; //para reproducir audio
-    boolean isOff = true;
+    boolean iconON = true;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mp = MediaPlayer.create(MainInicio.this, R.raw.musica_acerca);
+        mp.setLooping(true);
 
         binding = ActivityMainInicioBinding.inflate(getLayoutInflater());
 
@@ -80,24 +82,22 @@ public class MainInicio extends AppCompatActivity {
             Picasso.get().load(foto).into(imgFoto);
         }
 
-        /* SOLUCION MUTE EN PROGRESO
         volumen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (isOff){
-
+                if(mp.isPlaying()){
                     volumen.setImageResource(R.drawable.volumen_off);
-                    isOff = false;
-                } else {
-
+                    iconON = false;
+                    mp.pause();
+                }else{
                     volumen.setImageResource(R.drawable.volumen_on);
-                    isOff = true;
+                    iconON = true;
+                    mp.start();
                 }
+
             }
         });
-*/
-
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
@@ -144,66 +144,32 @@ public class MainInicio extends AppCompatActivity {
         //nombre de usuario
         textUsuario.setText(Usuario.getNombre());
         //imagen de usuario
-        imgFoto.setImageBitmap(Db.seleccionarUsuario(MainInicio.this,Usuario.getNombre()));
+        imgFoto.setImageBitmap(Db.seleccionarUsuario(MainInicio.this, Usuario.getNombre()));
     }
 
-    public void intoSesion(View view){
+    public void intoSesion(View view) {
         Intent intent = new Intent(MainInicio.this, MainPerfil.class);
         startActivity(intent);
     }
 
     //reproduce la musica en bucle en la pantalla Acerca de y lo para en las demás
-    private void reproducirMusica(int id){
-        /* SOLUCION EN PROGRESO
-        if(id == R.id.acerca) {
-            mp = MediaPlayer.create(MainInicio.this, R.raw.musica_acerca);
-            mp.setLooping(true);
+    private void reproducirMusica(int id) {
 
-            volumen.setVisibility(View.VISIBLE);
-            if (!isOff) {
-                mp.pause();
-            } else {
+        if (id == R.id.acerca) {
+
+            if (iconON) {
                 mp.start();
+            } else {
+                mp.pause();
             }
-
-
+            volumen.setVisibility(View.VISIBLE);
         } else {
             if (mp != null) {
                 mp.pause();
             }
+            volumen.setVisibility(View.INVISIBLE);
         }
-         */
-
-
-        if (id != R.id.acerca) {
-            if (mp != null) {
-                mp.stop();
-                mp = null;
-                volumen.setImageResource(R.drawable.volumen_on);
-                volumen.setVisibility(View.INVISIBLE);
-            }
-        } else {
-            mp = MediaPlayer.create(MainInicio.this, R.raw.musica_acerca);
-            mp.setLooping(true);
-            mp.start();
-            volumen.setVisibility(View.VISIBLE);
-            volumen.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    if (isOff){
-                        mp.pause();
-                        volumen.setImageResource(R.drawable.volumen_off);
-                        isOff = false;
-                    } else {
-                        mp.start();
-                        volumen.setImageResource(R.drawable.volumen_on);
-                        isOff = true;
-                    }
-                }
-            });
-        }
-
 
     }
+
 }
