@@ -93,7 +93,7 @@ public class MainRegister extends AppCompatActivity {
                 }
 
                 if (Db.crearUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString(), ImageViewtoBite(avatar))) {
-                    Toast.makeText(this, "USUARIO CREADO", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.usuario_creado), Toast.LENGTH_SHORT).show();
                     Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
                     Intent intent = new Intent(MainRegister.this, MainActivity.class);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainRegister.this, anim.animacion());
@@ -101,12 +101,12 @@ public class MainRegister extends AppCompatActivity {
                 }
 
             } else {
-                Toast.makeText(this, "LAS CONTRASEÑAS NO COINCIDEN", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.contrasena_diferente), Toast.LENGTH_SHORT).show();
                 textContrasena.setText("");
                 textRecontrasena.setText("");
             }
         } else {
-            Toast.makeText(this, "USUARIO EXISTE", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.usuario_existe), Toast.LENGTH_SHORT).show();
         }
 
 

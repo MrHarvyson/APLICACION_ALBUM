@@ -26,8 +26,7 @@
     <string name="entrada_titulo">TÍTULO DEL ÁLBUM</string>
     <string name="entrada_autor">AUTOR</string>
     <string name="entrada_discografia">DISCOGRAFÍA</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
     <string name="texto_nombre">Álvaro Astilleros y José Moreno</string>
     <string name="texto_bio">José ha desarrollado una exitosa carrera en diseño 3D a lo largo de 9 años. Álvaro es una voz autorizada en el mundo de la publicidad y el marketing.Tras estudiar juntos DAM afrontan un nuevo reto y aúnan su \"know-how\" para desarrollar una novedosa aplicación de música.</string>
@@ -43,5 +42,19 @@
     <string name="texto_recycle_version">Versión 1.10.4.2.3.15\nFecha de actualización 15/01/2023\nSO requerido Android</string>
     <string name="texto_recycle_info">Te acercamos a momentos mágicos en tu memoria. TuneHub\nes una herramienta que te permite guardar tus álbumes\nfavoritos. ¿Un amigo te ha recomendado un disco y\nquieres acordarte para comprarlo más tarde?\n¡¡Descárgate TuneHub, guárdatelo y despreocúpate\nde esa incómoda sensación de olvidar algo y\ntener que recordarlo!!</string>
 
+
+    <string name="notificacion_album">Álbum </string>
+    <string name="notificacion_album_creado"> creado.</string>
+    <string name="notificacion_album_existe">ya existe.</string>
+    <string name="notificacion_completar_campos">COMPLETE TODOS LOS CAMPOS</string>
+    <string name="notificacion_desea_eliminar">¿DESEA ELIMINAR</string>
+    <string name="notificacion_si">SI</string>
+    <string name="notificacion_borrado">BORRADO CORRECTO</string>
+    <string name="notificacion_sesion">SESIÓN CERRADA</string>
+    <string name="notificacion_usuario">CONTRASEÑA/USUARIO INCORRECTO</string>
+    <string name="usuario_creado">USUARIO CREADO</string>
+    <string name="contrasena_diferente">LAS CONTRASEÑAS NO COINCIDEN</string>
+    <string name="usuario_existe">USUARIO EXISTE</string>
+    <string name="texto_version">Versión 1.10.4.2.3.15</string>
 
 </resources>

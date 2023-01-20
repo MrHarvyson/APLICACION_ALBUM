@@ -80,19 +80,19 @@ public class CrearFragment extends Fragment {
                     if(Db.crearAlbum(getContext(), titulo.getText().toString(),autor.getText().toString(), discografica.getText().toString(),ImageViewtoBite(portada))){
                         //Toast.makeText(getContext(), "HAY QUE PONER NOTIFICACION", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), MainInicio.class);
-                        crearNotificacion("Álbum " + titulo.getText().toString() + " creado.");
+                        crearNotificacion(getString(R.string.notificacion_album) + " " + titulo.getText().toString() + " " + getString(R.string.notificacion_album_creado));
                         startActivity(intent);
                     }else {
                         //Toast.makeText(getContext(), "USUARIO REPETIDO", Toast.LENGTH_SHORT).show();
 
                         portada.setImageDrawable(getResources().getDrawable(R.drawable.camera));
-                        crearNotificacion("El álbum " + titulo.getText().toString() + " ya existe.");
+                        crearNotificacion(getString(R.string.notificacion_album) + " " + titulo.getText().toString() + " " + getString(R.string.notificacion_album_existe));
                         titulo.setText("");
                         autor.setText("");
                         discografica.setText("");
                     }
                 }else{
-                    Toast.makeText(getContext(), "COMPLETE TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.notificacion_completar_campos), Toast.LENGTH_SHORT).show();
                 }
 
             }
