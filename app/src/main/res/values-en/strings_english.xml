@@ -27,7 +27,7 @@
         <string name="entrada_autor">SONGWRITER</string>
         <string name="entrada_discografia">RECORD LABEL</string>
 
-
+        <string name="titulo_acerca">ABOUT US</string>
         <string name="texto_nombre">Álvaro Astilleros &amp; José Moreno</string>
         <string name="texto_bio">José has developed a successful career in\n3D design for 9 years.\nÁlvaro is an authorised voice in the world\nof advertising and marketing.\nAfter studying DAM together they pursue\na new challenge and put together their\n\"know-how\" to develop an innovative\nmusic application.</string>
         <string name="titulo_caracteristicas">APP\'s FEATURES</string>

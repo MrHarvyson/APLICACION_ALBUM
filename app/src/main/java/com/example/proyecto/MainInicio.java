@@ -32,7 +32,7 @@ public class MainInicio extends AppCompatActivity {
     //RecyclerView listaAlbumes;
     //ArrayList<Albumes> listaArrayAlbumes;
 
-    private TextView text1, text2, textUsuario;
+    private TextView text1, text2, textUsuario, tituloAcerca;
     private ImageView fondoVerde, imgFoto, volumen;
     private LottieAnimationView logo;
     private GoogleSignInOptions gso;
@@ -70,6 +70,8 @@ public class MainInicio extends AppCompatActivity {
         volumen = findViewById(R.id.volumen_click);
         volumen.setVisibility(View.INVISIBLE);
         btnInto = findViewById(R.id.btnInto);
+        tituloAcerca = findViewById(R.id.tituloAcerca);
+        tituloAcerca.setVisibility(View.INVISIBLE);
         //listaAlbumes = findViewById(R.id.lista_albumes);
 
 
@@ -185,10 +187,12 @@ public class MainInicio extends AppCompatActivity {
             textUsuario.setVisibility(View.INVISIBLE);
             imgFoto.setVisibility(View.INVISIBLE);
             btnInto.setVisibility(View.INVISIBLE);
+            tituloAcerca.setVisibility(View.VISIBLE);
         } else {
             textUsuario.setVisibility(View.VISIBLE);
             imgFoto.setVisibility(View.VISIBLE);
             btnInto.setVisibility(View.VISIBLE);
+            tituloAcerca.setVisibility(View.INVISIBLE);
         }
 
     }
