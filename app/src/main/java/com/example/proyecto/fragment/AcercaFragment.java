@@ -33,12 +33,11 @@ public class AcercaFragment extends Fragment {
         // Cargas la vista
         View view = inflater.inflate(R.layout.fragment_acerca_de, container, false);
         recycleLista = view.findViewById(R.id.lista_caracteristicas);
-        recycleLista.setHasFixedSize(true);
         recycleLista.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
         mList = new ArrayList<>();
 
-        //list1
+
         List<String> nestedList1 = new ArrayList<>();
         nestedList1.add(getString(R.string.texto_recycle_lista));
 
@@ -57,8 +56,8 @@ public class AcercaFragment extends Fragment {
 
 
         mList.add(new DataModel(nestedList1, getString(R.string.titulo_recycle_lista)));
-        mList.add(new DataModel( nestedList2, getString(R.string.titulo_recycle_agregar)));
-        mList.add(new DataModel( nestedList3, getString(R.string.titulo_recycle_borrar)));
+        mList.add(new DataModel(nestedList2, getString(R.string.titulo_recycle_agregar)));
+        mList.add(new DataModel(nestedList3, getString(R.string.titulo_recycle_borrar)));
         mList.add(new DataModel(nestedList4, getString(R.string.titulo_recycle_version)));
         mList.add(new DataModel(nestedList5, getString(R.string.titulo_recycle_info)));
 
