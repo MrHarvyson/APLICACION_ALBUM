@@ -95,7 +95,7 @@ public class CrearFragment extends Fragment {
                         discografica.setHint(getString(R.string.entrada_discografia));
                     }
                 }else{
-                    Toast.makeText(getContext(), getString(R.string.notificacion_completar_campos), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.mensaje_completar_campos), Toast.LENGTH_SHORT).show();
                 }
 
             }

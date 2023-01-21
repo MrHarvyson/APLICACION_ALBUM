@@ -27,8 +27,7 @@ public class MainLogin extends AppCompatActivity {
     private TextView text1, text2;
     private EditText textUsuario;
     private EditText textContrasena;
-    private ImageView fondoVerde;
-    private LottieAnimationView logo;
+    private ImageView fondoVerde,logo;
     private final static String CHANNEL_ID = "canal";
 
     private PendingIntent pendingIntent;
@@ -60,6 +59,7 @@ public class MainLogin extends AppCompatActivity {
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, anim.animacion());
                 Usuario.crearusuario(textUsuario.getText().toString());
                 startActivity(intent,options.toBundle());
+                finish();
 
             }else{
                 Toast.makeText(this, getString(R.string.notificacion_usuario), Toast.LENGTH_SHORT).show();
