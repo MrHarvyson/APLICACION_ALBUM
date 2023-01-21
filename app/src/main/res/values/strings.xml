@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">TUNEHUB</string>
     <string name="nombre_aplicacion">TUNEHUB</string>
-    <string name="eslogan">Guardamos tus momentos</string>
+    <string name="eslogan">Que la música te acompañe</string>
 
     <string name="boton_entrar">ENTRAR</string>
     <string name="boton_registar">REGISTRAR</string>
@@ -29,7 +29,7 @@
 
     <string name="titulo_acerca">ACERCA DE</string>
     <string name="texto_nombre">Álvaro Astilleros y José Moreno</string>
-    <string name="texto_bio">Hace mucho tiempo, en una galaxia muy, muy lejana la fuerza unió los caminos de José y Álvaro. José ha desarrollado una exitosa carrera en diseño 3D a lo largo de 9 años. Álvaro es una voz autorizada en el mundo de la publicidad y el marketing. Tras estudiar juntos DAM afrontan un nuevo reto y aúnan su "know-how" para desarrollar una novedosa aplicación de música. ¡Que la fuerza te acompañe!</string>
+    <string name="texto_bio">Hace mucho tiempo, en una galaxia muy, muy lejana la fuerza unió los caminos de José y Álvaro. José ha desarrollado una exitosa carrera en diseño 3D a lo largo de 9 años. Álvaro es una voz autorizada en el mundo de la publicidad y el marketing. Tras estudiar juntos DAM afrontan un nuevo reto y aúnan su "know-how" para desarrollar una novedosa aplicación de música. ¡Que la música te acompañe!</string>
     <string name="titulo_caracteristicas">CARACTERÍSTICAS DE LA APP</string>
     <string name="titulo_recycle_lista">Lista</string>
     <string name="titulo_recycle_agregar">Agregar</string>
