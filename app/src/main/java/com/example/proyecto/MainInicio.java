@@ -196,4 +196,9 @@ public class MainInicio extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

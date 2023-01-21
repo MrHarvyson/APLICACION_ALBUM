@@ -119,7 +119,8 @@
             android:fontFamily="@font/aldrich"
             android:text="Usuario"
             android:textColor="@color/verde"
-            android:textSize="20sp"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imgFoto"
             app:layout_constraintStart_toEndOf="@+id/imgFoto" />
 
@@ -139,26 +140,27 @@
             android:id="@+id/volumen_click"
             android:layout_width="32dp"
             android:layout_height="33dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="13dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnInto"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/volumen_on" />
 
         <TextView
             android:id="@+id/tituloAcerca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginBottom="18dp"
             android:fontFamily="@font/aldrich"
+            android:gravity="center"
             android:text="@string/titulo_acerca"
             android:textColor="@color/verde"
-            android:textSize="26sp"
-            app:layout_constraintBottom_toTopOf="@+id/textUsuario"
-            app:layout_constraintStart_toEndOf="@+id/imgFoto" />
+            android:textSize="50sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <!--
                 <ImageView
                     android:id="@+id/imgFoto"
