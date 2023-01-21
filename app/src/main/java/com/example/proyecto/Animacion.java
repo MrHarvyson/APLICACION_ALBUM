@@ -11,10 +11,9 @@ import com.airbnb.lottie.LottieAnimationView;
 public class Animacion {
 
     private TextView text1, text2; //texto1 --> San Fernando  texto2 --> Biblioteca publica
-    private ImageView fondoVerde;
-    private LottieAnimationView logo;
+    private ImageView fondoVerde,logo;
 
-    public Animacion(TextView text1, TextView text2, ImageView fondoVerde, LottieAnimationView logo) {
+    public Animacion(TextView text1, TextView text2, ImageView fondoVerde, ImageView logo) {
         this.text1 = text1;
         this.text2 = text2;
         this.fondoVerde = fondoVerde;

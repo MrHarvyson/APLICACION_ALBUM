@@ -46,7 +46,7 @@
     <string name="notificacion_album">Álbum </string>
     <string name="notificacion_album_creado"> creado.</string>
     <string name="notificacion_album_existe">ya existe.</string>
-    <string name="notificacion_completar_campos">COMPLETE TODOS LOS CAMPOS</string>
+    <string name="mensaje_completar_campos">COMPLETE TODOS LOS CAMPOS</string>
     <string name="notificacion_desea_eliminar">¿DESEA ELIMINAR</string>
     <string name="notificacion_si">SI</string>
     <string name="notificacion_borrado">BORRADO CORRECTO</string>

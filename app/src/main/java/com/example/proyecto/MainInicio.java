@@ -139,11 +139,12 @@ public class MainInicio extends AppCompatActivity {
 
                     //cerrar sesion google
                     gsc.signOut().addOnCompleteListener(task -> {
-                        //finish();
-                        startActivity(intent, options.toBundle());
+                        finish();
                     });
+                    startActivity(intent, options.toBundle());
                     //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
                     Toast.makeText(this, getString(R.string.notificacion_sesion), Toast.LENGTH_SHORT).show();
+                    finish();
                     break;
             }
 

@@ -21,10 +21,9 @@ import com.google.android.gms.tasks.Task;
 public class MainActivity extends AppCompatActivity {
 
     private TextView text1, text2;
-    private ImageView fondoVerde;
+    private ImageView fondoVerde,logo;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
-    private LottieAnimationView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +72,15 @@ public class MainActivity extends AppCompatActivity {
                 task.getResult(ApiException.class);
                 Intent intent = new Intent(MainActivity.this, MainInicio.class);
                 startActivity(intent);
+                finish();
             } catch (ApiException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void onBackPressed() {
+        moveTaskToBack(true);
+        finish();
     }
 }

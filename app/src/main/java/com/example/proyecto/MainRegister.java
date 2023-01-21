@@ -27,8 +27,7 @@ public class MainRegister extends AppCompatActivity {
 
     private TextView text1, text2;
     private EditText textUsuario, textContrasena, textRecontrasena;
-    private ImageView fondoVerde;
-    private LottieAnimationView logo;
+    private ImageView fondoVerde,logo;
     private CircleImageView avatar;
     private boolean hay_foto =false;
 
@@ -85,30 +84,38 @@ public class MainRegister extends AppCompatActivity {
     public void registrar(View view) {
 
 
-        if (!Db.consultaUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString())) {
-            if (textContrasena.getText().toString().equals(textRecontrasena.getText().toString())) {
+        if(textUsuario.getText().toString().equals("") || textContrasena.getText().toString().equals("") || textRecontrasena.getText().toString().equals("")){
 
-                if(!hay_foto){
-                    avatar.setImageDrawable(getResources().getDrawable(R.drawable.user2));
+            Toast.makeText(this, getString(R.string.mensaje_completar_campos), Toast.LENGTH_SHORT).show();
+
+        }else{
+
+            if (!Db.consultaUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString())) {
+                if (textContrasena.getText().toString().equals(textRecontrasena.getText().toString())) {
+
+                    if(!hay_foto){
+                        avatar.setImageDrawable(getResources().getDrawable(R.drawable.user2));
+                    }
+
+                    if (Db.crearUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString(), ImageViewtoBite(avatar))) {
+                        Toast.makeText(this, getString(R.string.usuario_creado), Toast.LENGTH_SHORT).show();
+                        Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+                        Intent intent = new Intent(MainRegister.this, MainActivity.class);
+                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainRegister.this, anim.animacion());
+                        startActivity(intent, options.toBundle());
+                        //finish();
+                    }
+
+                } else {
+                    Toast.makeText(this, getString(R.string.contrasena_diferente), Toast.LENGTH_SHORT).show();
+                    textContrasena.setText("");
+                    textRecontrasena.setText("");
                 }
-
-                if (Db.crearUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString(), ImageViewtoBite(avatar))) {
-                    Toast.makeText(this, getString(R.string.usuario_creado), Toast.LENGTH_SHORT).show();
-                    Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
-                    Intent intent = new Intent(MainRegister.this, MainActivity.class);
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainRegister.this, anim.animacion());
-                    startActivity(intent, options.toBundle());
-                }
-
             } else {
-                Toast.makeText(this, getString(R.string.contrasena_diferente), Toast.LENGTH_SHORT).show();
-                textContrasena.setText("");
-                textRecontrasena.setText("");
+                Toast.makeText(this, getString(R.string.usuario_existe), Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(this, getString(R.string.usuario_existe), Toast.LENGTH_SHORT).show();
-        }
 
+        }
 
     }
 
