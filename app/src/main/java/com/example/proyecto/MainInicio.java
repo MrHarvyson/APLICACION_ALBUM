@@ -173,12 +173,13 @@ public class MainInicio extends AppCompatActivity {
             } else {
                 mp.pause();
             }
-            volumen.setVisibility(View.VISIBLE);
+
         } else {
             if (mp != null) {
-                mp.pause();
+                if (mp.isPlaying()) {
+                    mp.pause();
+                }
             }
-            volumen.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -189,13 +190,14 @@ public class MainInicio extends AppCompatActivity {
             imgFoto.setVisibility(View.INVISIBLE);
             btnInto.setVisibility(View.INVISIBLE);
             tituloAcerca.setVisibility(View.VISIBLE);
+            volumen.setVisibility(View.VISIBLE);
         } else {
             textUsuario.setVisibility(View.VISIBLE);
             imgFoto.setVisibility(View.VISIBLE);
             btnInto.setVisibility(View.VISIBLE);
             tituloAcerca.setVisibility(View.INVISIBLE);
+            volumen.setVisibility(View.INVISIBLE);
         }
-
     }
 
     @Override
