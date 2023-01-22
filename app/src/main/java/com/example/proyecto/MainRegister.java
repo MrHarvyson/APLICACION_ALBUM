@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.db.Db;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 
@@ -94,7 +93,7 @@ public class MainRegister extends AppCompatActivity {
                 if (textContrasena.getText().toString().equals(textRecontrasena.getText().toString())) {
 
                     if(!hay_foto){
-                        avatar.setImageDrawable(getResources().getDrawable(R.drawable.user2));
+                        avatar.setImageDrawable(getResources().getDrawable(R.drawable.logo_usuario));
                     }
 
                     if (Db.crearUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString(), ImageViewtoBite(avatar))) {

@@ -45,7 +45,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         if (isExpandable){
             holder.mArrowImage.setImageResource(R.drawable.flecha_arriba);
         }else{
-            holder.mArrowImage.setImageResource(R.drawable.flecha_abajo);
+            holder.mArrowImage.setImageResource(R.drawable.boton_flecha_abajo);
         }
 
         NestedAdapter adapter = new NestedAdapter(list);

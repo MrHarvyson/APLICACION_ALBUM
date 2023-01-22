@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:src="@drawable/as"
+            android:src="@drawable/foto_acerca_de"
             app:civ_border_color="@color/verde"
             app:civ_border_width="5dp"
             app:layout_constraintEnd_toEndOf="parent"

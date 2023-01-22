@@ -47,17 +47,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.airbnb.lottie.LottieAnimationView
+    <ImageView
         android:id="@+id/animation_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:transitionName="libro"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/logo_intro"
+        android:transitionName="album"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/music" />
+        app:layout_constraintStart_toStartOf="parent"/>
+
 
 
     <TextView
@@ -103,7 +103,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/into_sesion"
-            android:onClick="intoSesion"
+            android:onClick="entrarUsuario"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.955"
@@ -145,7 +145,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/volumen_on" />
+            app:srcCompat="@drawable/boton_volumen_on" />
 
         <TextView
             android:id="@+id/tituloAcerca"

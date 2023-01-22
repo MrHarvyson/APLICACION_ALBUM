@@ -3,7 +3,6 @@ package com.example.proyecto;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.media.MediaPlayer;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
 import com.example.proyecto.db.Db;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -29,16 +26,14 @@ public class MainInicio extends AppCompatActivity {
 
     //el nombre ActivityMainIncioBinding cambiara según la clase en la que estemos
     ActivityMainInicioBinding binding;
-    //RecyclerView listaAlbumes;
-    //ArrayList<Albumes> listaArrayAlbumes;
 
     private TextView text1, text2, textUsuario, tituloAcerca;
-    private ImageView fondoVerde, imgFoto, volumen;
-    private LottieAnimationView logo;
+    private ImageView fondoVerde, imgFoto, volumen,logo,pho;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
     private MediaPlayer mp; //para reproducir audio
     boolean iconON = true;
+    private String nombre;
 
     private Button btnInto;
 
@@ -56,7 +51,6 @@ public class MainInicio extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(binding.getRoot());
-        //replaceFragment(new ListaFragment());
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.myNavHost);
         NavController navController = navHostFragment.getNavController();
@@ -72,32 +66,30 @@ public class MainInicio extends AppCompatActivity {
         btnInto = findViewById(R.id.btnInto);
         tituloAcerca = findViewById(R.id.tituloAcerca);
         tituloAcerca.setVisibility(View.INVISIBLE);
-        //listaAlbumes = findViewById(R.id.lista_albumes);
-
-
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this, gso);
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
-        Uri foto = null;
+        // lo usamos para acceder a la información del usuario de google
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        Uri foto;
         if (acct != null) {
-            String nombre = acct.getGivenName();
+            nombre = acct.getGivenName();
             foto = acct.getPhotoUrl();
-            Usuario.crearusuario(nombre);
             Picasso.get().load(foto).into(imgFoto);
         }
 
+        // al tocar icono musica se para o reproduce la musica
         volumen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(mp.isPlaying()){
-                    volumen.setImageResource(R.drawable.volumen_off);
+                    volumen.setImageResource(R.drawable.boton_volumen_off);
                     iconON = false;
                     mp.pause();
                 }else{
-                    volumen.setImageResource(R.drawable.volumen_on);
+                    volumen.setImageResource(R.drawable.boton_volumen_on);
                     iconON = true;
                     mp.start();
                 }
@@ -105,13 +97,13 @@ public class MainInicio extends AppCompatActivity {
             }
         });
 
+        // botones del navigationView
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
 
                 case R.id.lista:
                     navController.navigate(R.id.listaFragment);
-                    //replaceFragment(new ListaFragment());
                     reproducirMusica(R.id.lista);
                     mostrarControles(R.id.lista);
                     break;
@@ -144,7 +136,7 @@ public class MainInicio extends AppCompatActivity {
                     startActivity(intent, options.toBundle());
                     //toast nos sirve para crear un mensaje emergente sin que se pueda presionar
                     Toast.makeText(this, getString(R.string.notificacion_sesion), Toast.LENGTH_SHORT).show();
-                    finish();
+                    //finish();
                     break;
             }
 
@@ -153,17 +145,18 @@ public class MainInicio extends AppCompatActivity {
 
         //arreglar foto de google desaparece por tener esto crear condicion
         //nombre de usuario
-        textUsuario.setText(Usuario.getNombre());
+        textUsuario.setText(nombre);
         //imagen de usuario
         imgFoto.setImageBitmap(Db.seleccionarUsuario(MainInicio.this, Usuario.getNombre()));
     }
 
-    public void intoSesion(View view) {
+    // entra en la pantalla de usuario
+    public void entrarUsuario(View view) {
         Intent intent = new Intent(MainInicio.this, MainPerfil.class);
         startActivity(intent);
     }
 
-    //reproduce la musica en bucle en la pantalla Acerca de y lo para en las demás
+    // reproduce la musica en bucle en la pantalla Acerca de y lo para en las demás
     private void reproducirMusica(int id) {
 
         if (id == R.id.acerca) {
@@ -182,6 +175,7 @@ public class MainInicio extends AppCompatActivity {
         }
     }
 
+    // mostrar controles en la parte superior del MainInicio
     private void mostrarControles(int id) {
 
         if (id == R.id.acerca) {
@@ -198,8 +192,16 @@ public class MainInicio extends AppCompatActivity {
 
     }
 
+    // no se pueda usar el boton de retroceder en esta pantalla
     @Override
     public void onBackPressed() {
 
+    }
+
+    // pare la musica al minimizar la aplicacion
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mp.pause();
     }
 }
