@@ -1,19 +1,15 @@
 package com.example.proyecto.fragment;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.proyecto.R;
 import com.example.proyecto.adaptadores.RecycleViewAdapter;
 import com.example.proyecto.recycleView.DataModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +36,6 @@ public class AcercaFragment extends Fragment {
 
         List<String> nestedList1 = new ArrayList<>();
         nestedList1.add(getString(R.string.texto_recycle_lista));
-
 
         List<String> nestedList2 = new ArrayList<>();
         nestedList2.add(getString(R.string.texto_recycle_agregar));

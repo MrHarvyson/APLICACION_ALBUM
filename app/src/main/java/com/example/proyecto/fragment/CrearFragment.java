@@ -47,11 +47,10 @@ public class CrearFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_crear, container, false);
 
         titulo = (EditText) view.findViewById(R.id.textTitulo);
-        autor =(EditText) view.findViewById(R.id.textAutor);
-        discografica =(EditText) view.findViewById(R.id.textDiscografica);
+        autor = (EditText) view.findViewById(R.id.textAutor);
+        discografica = (EditText) view.findViewById(R.id.textDiscografica);
         agregar = (Button) view.findViewById(R.id.btn_agregar);
-        portada =(CircleImageView) view.findViewById(R.id.btn_portada);
-        // Inflate the layout for this fragment
+        portada = (CircleImageView) view.findViewById(R.id.btn_portada);
 
         //seleccionar foto
         portada.setOnClickListener(new View.OnClickListener() {
@@ -67,24 +66,23 @@ public class CrearFragment extends Fragment {
         });
 
         //agregar album
-        agregar.setOnClickListener(new View.OnClickListener(){
+        agregar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
-                if(!titulo.getText().toString().equals("") && !autor.getText().toString().equals("") && !discografica.getText().toString().equals("")){
+                if (!titulo.getText().toString().equals("") && !autor.getText().toString().equals("") && !discografica.getText().toString().equals("")) {
 
-                    if(!hay_foto){
+                    if (!hay_foto) {
                         portada.setImageDrawable(getResources().getDrawable(R.drawable.icon_album));
                     }
-                    if(Db.crearAlbum(getContext(), titulo.getText().toString(),autor.getText().toString(), discografica.getText().toString(),ImageViewtoBite(portada))){
+                    if (Db.crearAlbum(getContext(), titulo.getText().toString(), autor.getText().toString(), discografica.getText().toString(), ImageViewtoBite(portada))) {
                         //Toast.makeText(getContext(), "HAY QUE PONER NOTIFICACION", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), MainInicio.class);
                         crearNotificacion(getString(R.string.notificacion_album) + " " + titulo.getText().toString() + " " + getString(R.string.notificacion_album_creado));
                         startActivity(intent);
-                    }else {
+                    } else {
                         //Toast.makeText(getContext(), "USUARIO REPETIDO", Toast.LENGTH_SHORT).show();
-
                         portada.setImageDrawable(getResources().getDrawable(R.drawable.camera));
                         crearNotificacion(getString(R.string.notificacion_album) + " " + titulo.getText().toString() + " " + getString(R.string.notificacion_album_existe));
                         titulo.setText("");
@@ -94,7 +92,7 @@ public class CrearFragment extends Fragment {
                         autor.setHint(getString(R.string.entrada_autor));
                         discografica.setHint(getString(R.string.entrada_discografia));
                     }
-                }else{
+                } else {
                     Toast.makeText(getContext(), getString(R.string.mensaje_completar_campos), Toast.LENGTH_SHORT).show();
                 }
 
@@ -108,54 +106,54 @@ public class CrearFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK){
-            Uri path =data.getData();
+        if (resultCode == Activity.RESULT_OK) {
+            Uri path = data.getData();
             portada.setImageURI(path);
         }
     }
 
     //convertir imagen a bites
-    private byte[] ImageViewtoBite(CircleImageView avatar){
-        Bitmap bitmap =((BitmapDrawable)avatar.getDrawable()).getBitmap();
+    private byte[] ImageViewtoBite(CircleImageView avatar) {
+        Bitmap bitmap = ((BitmapDrawable) avatar.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
     }
-    private void crearNotificacion(String titulo){
+
+    private void crearNotificacion(String titulo) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,"NEW", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "NEW", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = (NotificationManager) getContext().getSystemService(NOTIFICATION_SERVICE);
             manager.createNotificationChannel(channel);
 
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(), CHANNEL_ID)
                     .setSmallIcon(R.drawable.icon_album)
                     .setContentTitle(getString(R.string.app_name))
                     .setContentText(titulo)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setAutoCancel(true)
                     .setOngoing(false)
-                    .setContentIntent(PendingIntent.getActivity(getContext().getApplicationContext(), 0,new Intent(),PendingIntent.FLAG_IMMUTABLE)); //eliminar al tocar
+                    .setContentIntent(PendingIntent.getActivity(getContext().getApplicationContext(), 0, new Intent(), PendingIntent.FLAG_IMMUTABLE)); //eliminar al tocar
 
             NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext().getApplicationContext());
-            managerCompat.notify(1,builder.build());
+            managerCompat.notify(1, builder.build());
 
-        }else{
+        } else {
             //setPendingIntent(MainInicio.class);
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(),CHANNEL_ID)
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext().getApplicationContext(), CHANNEL_ID)
                     .setSmallIcon(R.drawable.icon_album)
                     .setContentTitle(getString(R.string.app_name))
                     .setContentText(titulo)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setAutoCancel(true)
                     .setOngoing(false)
-                    .setContentIntent(PendingIntent.getActivity(getContext().getApplicationContext(), 0,new Intent(),PendingIntent.FLAG_IMMUTABLE)); //eliminar al tocar
+                    .setContentIntent(PendingIntent.getActivity(getContext().getApplicationContext(), 0, new Intent(), PendingIntent.FLAG_IMMUTABLE)); //eliminar al tocar
 
             NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext().getApplicationContext());
-            managerCompat.notify(1,builder.build());
+            managerCompat.notify(1, builder.build());
         }
     }
-
 
 }

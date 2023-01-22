@@ -2,15 +2,12 @@ package com.example.proyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.proyecto.db.Db;
+import com.example.proyecto.entidades.Usuario;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -22,6 +19,7 @@ public class MainPerfil extends AppCompatActivity {
     private GoogleSignInClient gsc;
     private ImageView imgFoto;
     private TextView textUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,23 +33,21 @@ public class MainPerfil extends AppCompatActivity {
         gsc = GoogleSignIn.getClient(this, gso);
         imgFoto = findViewById(R.id.imgFoto);
         textUsuario = findViewById(R.id.textUsuario);
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
-        Uri foto = null;
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
-            String nombre = acct.getGivenName();
-            foto = acct.getPhotoUrl();
-            Usuario.crearusuario(nombre);
-            Picasso.get().load(foto).into(imgFoto);
-        }else {
-            imgFoto.setImageBitmap(Db.seleccionarUsuario(MainPerfil.this, Usuario.getNombre()));
+            textUsuario.setText(Usuario.getNombre());
+            Picasso.get().load(Usuario.getFotoUri()).into(imgFoto);
+        } else {
+            textUsuario.setText(Usuario.getNombre());
+            imgFoto.setImageBitmap(Usuario.getFotoBitmap());
         }
 
-        textUsuario.setText(Usuario.getNombre());
     }
 
-    public void back(View view){
+    public void back(View view) {
         onBackPressed();
+        finish();
     }
 
 }

@@ -13,7 +13,7 @@
         android:layout_marginBottom="75dp"
         android:background="@drawable/boton_verde_lleno"
         android:fontFamily="@font/aldrich"
-        android:onClick="entrar"
+        android:onClick="entrarLogin"
         android:text="@string/boton_entrar"
         android:textColor="#333333"
         android:textSize="24sp"
@@ -76,10 +76,10 @@
 
     <ImageView
         android:id="@+id/animation_view"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="50dp"
-        android:background="@mipmap/ic_launcher_foreground"
+        android:background="@drawable/logo_intro"
         android:transitionName="album"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
