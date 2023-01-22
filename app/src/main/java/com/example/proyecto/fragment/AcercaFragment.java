@@ -37,7 +37,6 @@ public class AcercaFragment extends Fragment {
         List<String> nestedList1 = new ArrayList<>();
         nestedList1.add(getString(R.string.texto_recycle_lista));
 
-
         List<String> nestedList2 = new ArrayList<>();
         nestedList2.add(getString(R.string.texto_recycle_agregar));
 

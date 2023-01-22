@@ -19,6 +19,7 @@ public class MainPerfil extends AppCompatActivity {
     private GoogleSignInClient gsc;
     private ImageView imgFoto;
     private TextView textUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,15 +36,16 @@ public class MainPerfil extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
+            textUsuario.setText(Usuario.getNombre());
             Picasso.get().load(Usuario.getFotoUri()).into(imgFoto);
-        }else {
+        } else {
             textUsuario.setText(Usuario.getNombre());
             imgFoto.setImageBitmap(Usuario.getFotoBitmap());
         }
 
     }
 
-    public void back(View view){
+    public void back(View view) {
         onBackPressed();
         finish();
     }
