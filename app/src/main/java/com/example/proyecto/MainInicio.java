@@ -3,9 +3,9 @@ package com.example.proyecto;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.media.MediaPlayer;
+
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
-import com.example.proyecto.db.Db;
+import com.example.proyecto.entidades.Usuario;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,14 +28,12 @@ public class MainInicio extends AppCompatActivity {
     //el nombre ActivityMainIncioBinding cambiara según la clase en la que estemos
     ActivityMainInicioBinding binding;
 
-    private TextView text1, text2, textUsuario, tituloAcerca;
-    private ImageView fondoVerde, imgFoto, volumen,logo,pho;
+    private TextView nombreAplicacion, textoEslogan, textUsuario, tituloAcerca;
+    private ImageView fondoVerde, imgFoto, volumen, logo;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
-    private MediaPlayer mp; //para reproducir audio
+    private MediaPlayer mp;
     boolean iconON = true;
-    private String nombre;
-
     private Button btnInto;
 
 
@@ -55,8 +54,8 @@ public class MainInicio extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.myNavHost);
         NavController navController = navHostFragment.getNavController();
 
-        text1 = findViewById(R.id.textNombreAplicacion);
-        text2 = findViewById(R.id.textEslogan);
+        nombreAplicacion = findViewById(R.id.textNombreAplicacion);
+        textoEslogan = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
         textUsuario = findViewById(R.id.textUsuario);
@@ -72,11 +71,13 @@ public class MainInicio extends AppCompatActivity {
 
         // lo usamos para acceder a la información del usuario de google
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        Uri foto;
         if (acct != null) {
-            nombre = acct.getGivenName();
-            foto = acct.getPhotoUrl();
-            Picasso.get().load(foto).into(imgFoto);
+            Usuario.crearusuario(acct.getGivenName(), acct.getPhotoUrl());
+            textUsuario.setText(Usuario.getNombre());
+            Picasso.get().load(Usuario.getFotoUri()).into(imgFoto);
+        } else {
+            textUsuario.setText(Usuario.getNombre());
+            imgFoto.setImageBitmap(Usuario.getFotoBitmap());
         }
 
         // al tocar icono musica se para o reproduce la musica
@@ -84,11 +85,11 @@ public class MainInicio extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(mp.isPlaying()){
+                if (mp.isPlaying()) {
                     volumen.setImageResource(R.drawable.boton_volumen_off);
                     iconON = false;
                     mp.pause();
-                }else{
+                } else {
                     volumen.setImageResource(R.drawable.boton_volumen_on);
                     iconON = true;
                     mp.start();
@@ -125,7 +126,7 @@ public class MainInicio extends AppCompatActivity {
                 case R.id.salir:
                     reproducirMusica(R.id.salir);
 
-                    Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+                    Animacion anim = new Animacion(nombreAplicacion, textoEslogan, fondoVerde, logo);
                     Intent intent = new Intent(MainInicio.this, MainActivity.class);
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
 
@@ -143,11 +144,6 @@ public class MainInicio extends AppCompatActivity {
             return true;
         });
 
-        //arreglar foto de google desaparece por tener esto crear condicion
-        //nombre de usuario
-        textUsuario.setText(nombre);
-        //imagen de usuario
-        imgFoto.setImageBitmap(Db.seleccionarUsuario(MainInicio.this, Usuario.getNombre()));
     }
 
     // entra en la pantalla de usuario

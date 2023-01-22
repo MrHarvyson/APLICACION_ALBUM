@@ -43,7 +43,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         holder.expandableLayout.setVisibility(isExpandable ? View.VISIBLE : View.GONE);
 
         if (isExpandable){
-            holder.mArrowImage.setImageResource(R.drawable.flecha_arriba);
+            holder.mArrowImage.setImageResource(R.drawable.boton_flecha_arriba);
         }else{
             holder.mArrowImage.setImageResource(R.drawable.boton_flecha_abajo);
         }

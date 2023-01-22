@@ -1,16 +1,12 @@
 package com.example.proyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -20,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView text1, text2;
+    private TextView nombreAplicacion, textoEslogan;
     private ImageView fondoVerde,logo;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
@@ -33,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         //para ocultar barra con el titulo
         getSupportActionBar().hide();
 
-        text1 = findViewById(R.id.textNombreAplicacion);
-        text2 = findViewById(R.id.textEslogan);
+        nombreAplicacion = findViewById(R.id.textNombreAplicacion);
+        textoEslogan = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.fondoVerde);
 
@@ -44,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void entrar(View view) {
-        Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+        Animacion anim = new Animacion(nombreAplicacion, textoEslogan, fondoVerde, logo);
         Intent intent = new Intent(MainActivity.this, MainLogin.class);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
         startActivity(intent, options.toBundle());
     }
 
     public void registrarInicio(View view) {
-        Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+        Animacion anim = new Animacion(nombreAplicacion, textoEslogan, fondoVerde, logo);
         Intent intent = new Intent(MainActivity.this, MainRegister.class);
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, anim.animacion());
         startActivity(intent, options.toBundle());

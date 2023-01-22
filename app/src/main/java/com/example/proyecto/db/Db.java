@@ -5,10 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -34,20 +30,6 @@ public class Db extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLA_ALBUMES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, discografica TEXT NOT NULL, portada BLOB)");
     }
 
-    //crear BD
-    public static void crearBd(Context context) {
-        Db db = new Db(context);
-        SQLiteDatabase dbData = db.getWritableDatabase();
-        if (dbData != null) {
-            //Toast.makeText(context, "Base de datos creada", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Base de datos no creada", Toast.LENGTH_SHORT).show();
-        }
-        dbData.close();
-        db.close();
-    }
-
-
     //crear usuarios
     public static boolean crearUsuario(Context context, String nombre, String contrasena, byte[] avatar) {
         Db db = new Db(context);
@@ -58,118 +40,18 @@ public class Db extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put("nombre", nombre);
             values.put("contrasena", contrasena);
-            values.put("avatar",avatar);
+            values.put("avatar", avatar);
             dbData.insert(TABLA_USUARIOS, null, values);
             correcto = true;
         } catch (Exception ex) {
-            System.out.println("ERRRORR");
+            System.out.println("ERROR CREAR USUARIO");
             correcto = false;
-        }finally {
+        } finally {
             dbData.close();
             db.close();
         }
 
         return correcto;
-    }
-
-    //crear albumes
-    public static boolean crearAlbum(Context context, String titulo, String autor, String discografica, byte[] portada) {
-        Db db = new Db(context);
-        SQLiteDatabase dbData = db.getWritableDatabase();
-        boolean correcto = false;
-
-        try {
-            if(!consultaAlbum(context,titulo)){
-                ContentValues values = new ContentValues();
-                values.put("titulo", titulo);
-                values.put("autor", autor);
-                values.put("discografica", discografica);
-                values.put("portada",portada);
-
-                dbData.insert(TABLA_ALBUMES, null, values);
-                correcto = true;
-            }else{
-                correcto = false;
-
-            }
-        } catch (Exception ex) {
-            correcto = false;
-            System.out.println("ERRRORR");
-        }finally {
-            dbData.close();
-            db.close();
-        }
-        return correcto;
-    }
-
-    // eliminar album
-    public static boolean eliminarAlbum(Context context, String titulo) {
-        Db db = new Db(context);
-        SQLiteDatabase dbData = db.getWritableDatabase();
-
-        boolean correcto = false;
-
-        //comprobar antes si existe el album
-
-        try {
-            if(consultaAlbum(context,titulo)){
-                dbData.execSQL("DELETE FROM " + TABLA_ALBUMES + " WHERE titulo = '" + titulo + "'");
-                correcto = true;
-            }else{
-                correcto = false;
-            }
-        } catch (Exception ex) {
-            correcto = false;
-        } finally {
-            dbData.close();
-        }
-
-        return correcto;
-    }
-
-    // consulta album
-
-    public static boolean consultaAlbum(Context context, String titulo){
-
-        Db db = new Db(context);
-        SQLiteDatabase dbData = db.getWritableDatabase();
-        boolean correcto = false;
-        String titu;
-
-        try {
-            Cursor fila = dbData.rawQuery("SELECT titulo FROM " + TABLA_ALBUMES + " WHERE titulo = '" + titulo + "'", null);
-            if(fila.moveToFirst()){
-                titu = fila.getString(0);
-                if(titu.equals(titulo)){
-                    correcto = true;
-                }else{
-                    correcto = false;
-                }
-            }
-        } catch (Exception ex) {
-            correcto = false;
-        } finally {
-            dbData.close();
-        }
-        return correcto;
-    }
-
-    //seleccionar usuario
-    public static Bitmap seleccionarUsuario(Context context, String nombre) {
-        Db db = new Db(context);
-        SQLiteDatabase dbData = db.getWritableDatabase();
-        ImageView foto = null;
-        Bitmap bitmap = null;
-
-        Cursor cursor = dbData.rawQuery("select * from " + TABLA_USUARIOS + " where nombre = '" + nombre + "'", null);
-        boolean correcto = false;
-        byte[] image = new byte[0];
-        while (cursor.moveToNext()) {
-            image = cursor.getBlob(3);
-        }
-        byte[] bytess = image;
-        bitmap = BitmapFactory.decodeByteArray(bytess,0,bytess.length);
-        return bitmap;
     }
 
     //consulta de usuario
@@ -180,80 +62,115 @@ public class Db extends SQLiteOpenHelper {
         Cursor fila = dbData.rawQuery("select * from " + TABLA_USUARIOS + " where nombre = '" + nombre + "'", null);
         boolean correcto = false;
 
-        try{
+        try {
             if (fila.moveToFirst()) {
                 String nomb = fila.getString(1);
                 String contra = fila.getString(2);
-                //divido este if para que me sirva comprobar el registro si existe con solo el nombre
                 if (nomb.equals(nombre)) {
                     if (contra.equals(contrasena)) {
-                        System.out.println("correcto");
+                        System.out.println("Contraseñas idénticas");
                         correcto = true;
                     }
                 } else {
                     correcto = false;
-                    System.out.println("Incorrecto");
+                    System.out.println("Contraseñas diferentes");
                 }
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             correcto = false;
-        }finally {
+        } finally {
             fila.close();
             dbData.close();
             db.close();
         }
 
-
-        /* Este metodo es mas util para query con varios resultados
-        while (fila.moveToNext()) {
-            String nomb = fila.getString(1);
-            String contra = fila.getString(2);
-            //divido este if para que me sirva comprobar el registro si existe con solo el nombre
-            if (nomb.equals(nombre) ) {
-                if (contra.equals(contrasena)){
-                    System.out.println("correcto");
-                    ok = true;
-                }
-            } else {
-                ok = false;
-                System.out.println("Incorrecto");
-            }
-        }
-        */
-        dbData.close();
-        db.close();
-        fila.close();
         return correcto;
     }
 
-    //consultar registros no usado pq vale consultarUsuario
-    public static boolean consultaRegistro(Context context, String nombre) {
+    // eliminar usuarios
 
+    //crear albumes
+    public static boolean crearAlbum(Context context, String titulo, String autor, String discografica, byte[] portada) {
         Db db = new Db(context);
-        boolean ok = false;
-
         SQLiteDatabase dbData = db.getWritableDatabase();
-        Cursor fila = dbData.rawQuery("select * from usuarios where nombre = '" + nombre + "'", null);
+        boolean correcto = false;
 
-        while (fila.moveToNext()) {
-            String nomb = fila.getString(1);
-            //divido este if para que me sirva comprobar el registro si existe con solo el nombre
-            if (nomb.equals(nombre)) {
-                ok = true;
-                System.out.println("Existe");
+        try {
+            if (!consultaAlbum(context, titulo)) {
+                ContentValues values = new ContentValues();
+                values.put("titulo", titulo);
+                values.put("autor", autor);
+                values.put("discografica", discografica);
+                values.put("portada", portada);
+
+                dbData.insert(TABLA_ALBUMES, null, values);
+                correcto = true;
             } else {
-                ok = false;
-                System.out.println("no existe");
+                correcto = false;
             }
+        } catch (Exception ex) {
+            correcto = false;
+            System.out.println("ERROR CREAR ÁLBUMES");
+        } finally {
+            dbData.close();
+            db.close();
         }
-        dbData.close();
-        db.close();
-        fila.close();
-        return ok;
+        return correcto;
     }
 
+    // eliminar album
+    public static boolean eliminarAlbum(Context context, String titulo) {
+        Db db = new Db(context);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+        boolean correcto = false;
+
+        try {
+            if (consultaAlbum(context, titulo)) {
+                dbData.execSQL("DELETE FROM " + TABLA_ALBUMES + " WHERE titulo = '" + titulo + "'");
+                correcto = true;
+            } else {
+                correcto = false;
+            }
+        } catch (Exception ex) {
+            correcto = false;
+        } finally {
+            dbData.close();
+            db.close();
+        }
+
+        return correcto;
+    }
+
+    // consulta album
+
+    public static boolean consultaAlbum(Context context, String titulo) {
+
+        Db db = new Db(context);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+        boolean correcto = false;
+        String titu;
+
+        try {
+            Cursor fila = dbData.rawQuery("SELECT titulo FROM " + TABLA_ALBUMES + " WHERE titulo = '" + titulo + "'", null);
+            if (fila.moveToFirst()) {
+                titu = fila.getString(0);
+                if (titu.equals(titulo)) {
+                    correcto = true;
+                } else {
+                    correcto = false;
+                }
+            }
+        } catch (Exception ex) {
+            correcto = false;
+        } finally {
+            dbData.close();
+            db.close();
+        }
+        return correcto;
+    }
 
     //creamos una lista que guarde todos los álbumes que tenemos en la base de datos
+
     public ArrayList<Albumes> mostrarAlbumes(Context context) {
 
         Db db = new Db(context);

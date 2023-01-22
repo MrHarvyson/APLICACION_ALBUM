@@ -1,36 +1,23 @@
 package com.example.proyecto;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.app.TaskStackBuilder;
-
 import android.app.ActivityOptions;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.proyecto.db.Db;
+import com.example.proyecto.entidades.Usuario;
 
 
 public class MainLogin extends AppCompatActivity {
 
-    private TextView text1, text2;
-    private EditText textUsuario;
-    private EditText textContrasena;
+    private TextView nombreAplicacion, textoEslogan;
+    private EditText textUsuario,textContrasena;
     private ImageView fondoVerde,logo;
-    private final static String CHANNEL_ID = "canal";
-
-    private PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +27,8 @@ public class MainLogin extends AppCompatActivity {
         //para ocultar barra con el titulo
         getSupportActionBar().hide();
 
-        text1 = findViewById(R.id.textNombreAplicacion);
-        text2 = findViewById(R.id.textEslogan);
+        nombreAplicacion = findViewById(R.id.textNombreAplicacion);
+        textoEslogan = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
         fondoVerde = findViewById(R.id.imgFondoVerde);
         textUsuario = findViewById(R.id.textUsu);
@@ -49,15 +36,14 @@ public class MainLogin extends AppCompatActivity {
 
     }
 
-    public void entrar(View view){
+    public void entrarLogin(View view){
 
         try{
             if(Db.consultaUsuario(MainLogin.this, textUsuario.getText().toString(),textContrasena.getText().toString())){
-                //crearNotificacion();
-                Animacion anim = new Animacion(text1, text2, fondoVerde, logo);
+                Animacion anim = new Animacion(nombreAplicacion, textoEslogan, fondoVerde, logo);
                 Intent intent = new Intent(this, MainInicio.class);
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, anim.animacion());
-                Usuario.crearusuario(textUsuario.getText().toString());
+                Usuario.crearusuario(textUsuario.getText().toString(),Usuario.getFotoUsuario(this,textUsuario.getText().toString()));
                 startActivity(intent,options.toBundle());
                 finish();
 
