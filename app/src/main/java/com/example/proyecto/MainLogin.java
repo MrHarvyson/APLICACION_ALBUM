@@ -39,7 +39,7 @@ public class MainLogin extends AppCompatActivity {
     public void entrarLogin(View view){
 
         try{
-            if(Db.consultaUsuario(MainLogin.this, textUsuario.getText().toString(),textContrasena.getText().toString())){
+            if(Db.consultaEntrarUsuario(MainLogin.this, textUsuario.getText().toString(),textContrasena.getText().toString())){
                 Animacion anim = new Animacion(nombreAplicacion, textoEslogan, fondoVerde, logo);
                 Intent intent = new Intent(this, MainInicio.class);
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, anim.animacion());

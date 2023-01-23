@@ -55,7 +55,7 @@ public class Db extends SQLiteOpenHelper {
     }
 
     //consulta de usuario
-    public static boolean consultaUsuario(Context context, String nombre, String contrasena) {
+    public static boolean consultaEntrarUsuario(Context context, String nombre, String contrasena) {
 
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
@@ -87,7 +87,63 @@ public class Db extends SQLiteOpenHelper {
         return correcto;
     }
 
-    // eliminar usuarios
+    public static boolean consultaRegistrarUsuario(Context context, String nombre) {
+
+        Db db = new Db(context);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+        Cursor fila = dbData.rawQuery("select * from " + TABLA_USUARIOS + " where nombre = '" + nombre + "'", null);
+        boolean correcto = false;
+
+        try {
+            if (fila.moveToFirst()) {
+                String nomb = fila.getString(1);
+                if (nomb.equals(nombre)) {
+                    correcto = true;
+                } else {
+                    correcto = false;
+                }
+            }
+        } catch (Exception ex) {
+            correcto = false;
+        } finally {
+            fila.close();
+            dbData.close();
+            db.close();
+        }
+
+        return correcto;
+    }
+
+    // modificar usuarios
+
+    public static void modificarNombreUsuario(Context context, String nombreAntiguo, String nombreNuevo) {
+
+        Db db = new Db(context);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+        String up = ("UPDATE usuario set nombre= '" + nombreNuevo + "' where nombre= '" + nombreAntiguo + "'");
+
+        dbData.execSQL(up);
+
+    }
+
+    public static void modificarContrasenaUsuario(Context context, String nombre, String contrasena) {
+        Db db = new Db(context);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+        String up = ("UPDATE usuario set contrasena= '" + contrasena + "' where nombre= '" + nombre + "'");
+        dbData.execSQL(up);
+    }
+
+    // eliminar usuario
+
+    public static void eliminarUsuario(Context context, String nombre) {
+
+        Db db = new Db(context);
+        SQLiteDatabase dbData = db.getWritableDatabase();
+        String eliminar = ("DELETE from usuario WHERE nombre='" + nombre + "'");
+
+        dbData.execSQL(eliminar);
+
+    }
 
     //crear albumes
     public static boolean crearAlbum(Context context, String titulo, String autor, String discografica, byte[] portada) {

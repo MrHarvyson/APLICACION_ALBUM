@@ -31,8 +31,8 @@ public class Usuario {
         return nombre;
     }
 
-    public void setNombre(String nombres) {
-        this.nombre = nombres;
+    public static void setNombre(String nombres) {
+        nombre = nombres;
     }
 
     public String getContraseña() {

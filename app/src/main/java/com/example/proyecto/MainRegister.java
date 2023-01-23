@@ -90,7 +90,7 @@ public class MainRegister extends AppCompatActivity {
 
         } else {
 
-            if (!Db.consultaUsuario(this, textUsuario.getText().toString(), textContrasena.getText().toString())) {
+            if (!Db.consultaRegistrarUsuario(this, textUsuario.getText().toString())) {
                 if (textContrasena.getText().toString().equals(textRecontrasena.getText().toString())) {
 
                     if (!hay_foto) {
