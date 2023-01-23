@@ -35,6 +35,7 @@ public class MainInicio extends AppCompatActivity {
     private MediaPlayer mp;
     boolean iconON = true;
     private Button btnInto;
+    boolean acerca = false;
 
 
     @Override
@@ -108,21 +109,26 @@ public class MainInicio extends AppCompatActivity {
                     navController.navigate(R.id.listaFragment);
                     reproducirMusica(R.id.lista);
                     mostrarControles(R.id.lista);
+                    acerca = false;
                     break;
                 case R.id.acerca:
                     navController.navigate(R.id.acercaFragment);
                     reproducirMusica(R.id.acerca);
                     mostrarControles(R.id.acerca);
+                    acerca = true;
+
                     break;
                 case R.id.anadir:
                     navController.navigate(R.id.crearFragment);
                     reproducirMusica(R.id.anadir);
                     mostrarControles(R.id.anadir);
+                    acerca = false;
                     break;
                 case R.id.borrar:
                     navController.navigate(R.id.borrarFragment);
                     reproducirMusica(R.id.borrar);
                     mostrarControles(R.id.borrar);
+                    acerca = false;
                     break;
                 case R.id.salir:
                     reproducirMusica(R.id.salir);
@@ -203,4 +209,12 @@ public class MainInicio extends AppCompatActivity {
         super.onPause();
         mp.pause();
     }
+/*
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(acerca && iconON){
+            mp.start();
+        }
+    }*/
 }
