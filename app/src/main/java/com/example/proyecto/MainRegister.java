@@ -52,7 +52,7 @@ public class MainRegister extends AppCompatActivity {
         avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                hay_foto = true;
                 ImagePicker.Companion.with(MainRegister.this)
                         .cropSquare()
                         .compress(1024)
