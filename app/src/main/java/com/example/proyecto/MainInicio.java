@@ -72,6 +72,7 @@ public class MainInicio extends AppCompatActivity {
         // lo usamos para acceder a la información del usuario de google
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
+            btnInto.setVisibility(View.INVISIBLE);
             Usuario.crearusuario(acct.getGivenName(), acct.getPhotoUrl());
             textUsuario.setText(Usuario.getNombre());
             Picasso.get().load(Usuario.getFotoUri()).into(imgFoto);
