@@ -65,14 +65,14 @@ public class BorrarFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         if (Db.eliminarAlbum(getContext(), titulo.getText().toString())) {
 
-                            crearNotificacion("Álbum " + titulo.getText().toString() + " borrado.");
+                            crearNotificacion(getString(R.string.notificacion_album) + " " + titulo.getText().toString() + " " + getString(R.string.notificacion_album_borrado));
                             titulo.setText("");
                             titulo.setHint(getString(R.string.entrada_titulo));
 
                             Intent intent = new Intent(getContext(), MainInicio.class);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getContext(), "Álbum " + titulo.getText().toString() + " no existe.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.notificacion_album) + " " + titulo.getText().toString() + " " + getString(R.string.notificacion_album_no_existe), Toast.LENGTH_SHORT).show();
                             titulo.setText("");
                             titulo.setHint(getString(R.string.entrada_titulo));
                         }
