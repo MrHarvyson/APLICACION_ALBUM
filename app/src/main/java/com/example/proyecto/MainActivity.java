@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(MainActivity.this, gso);
 
+        //cerrar sesion en el caso que este abierta
+        gsc.signOut().addOnCompleteListener(task -> {
+        });
     }
 
     public void entrar(View view) {

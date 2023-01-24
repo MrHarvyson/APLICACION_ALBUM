@@ -36,6 +36,7 @@ public class MainInicio extends AppCompatActivity {
     boolean iconON = true;
     private Button btnInto;
     boolean acerca = false;
+    boolean google = false;
 
 
     @Override
@@ -55,6 +56,7 @@ public class MainInicio extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.myNavHost);
         NavController navController = navHostFragment.getNavController();
 
+
         nombreAplicacion = findViewById(R.id.textNombreAplicacion);
         textoEslogan = findViewById(R.id.textEslogan);
         logo = findViewById(R.id.animation_view);
@@ -73,6 +75,7 @@ public class MainInicio extends AppCompatActivity {
         // lo usamos para acceder a la información del usuario de google
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
+            google = true;
             btnInto.setVisibility(View.INVISIBLE);
             Usuario.crearusuario(acct.getGivenName(), acct.getPhotoUrl());
             textUsuario.setText(Usuario.getNombre());
@@ -80,6 +83,10 @@ public class MainInicio extends AppCompatActivity {
         } else {
             textUsuario.setText(Usuario.getNombre());
             imgFoto.setImageBitmap(Usuario.getFotoBitmap());
+        }
+
+        if(google){
+            btnInto.setVisibility(View.INVISIBLE);
         }
 
         // al tocar icono musica se para o reproduce la musica
@@ -116,7 +123,6 @@ public class MainInicio extends AppCompatActivity {
                     reproducirMusica(R.id.acerca);
                     mostrarControles(R.id.acerca);
                     acerca = true;
-
                     break;
                 case R.id.anadir:
                     navController.navigate(R.id.crearFragment);
@@ -191,7 +197,9 @@ public class MainInicio extends AppCompatActivity {
         } else {
             textUsuario.setVisibility(View.VISIBLE);
             imgFoto.setVisibility(View.VISIBLE);
-            btnInto.setVisibility(View.VISIBLE);
+            if(!google){
+                btnInto.setVisibility(View.VISIBLE);
+            }
             tituloAcerca.setVisibility(View.INVISIBLE);
             volumen.setVisibility(View.INVISIBLE);
         }
@@ -214,11 +222,18 @@ public class MainInicio extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
         if (acerca && iconON) {
+            textUsuario.setVisibility(View.INVISIBLE);
+            imgFoto.setVisibility(View.INVISIBLE);
+            btnInto.setVisibility(View.INVISIBLE);
+            tituloAcerca.setVisibility(View.VISIBLE);
+            volumen.setVisibility(View.VISIBLE);
             mp.start();
         }
     }
+
 }
