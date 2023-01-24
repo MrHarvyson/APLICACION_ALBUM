@@ -48,7 +48,6 @@ public class MainPerfil extends AppCompatActivity {
             Picasso.get().load(Usuario.getFotoUri()).into(imgFoto);
         } else {
             textUsuario.setText(Usuario.getNombre());
-            textUsu.setText(Usuario.getNombre());
             imgFoto.setImageBitmap(Usuario.getFotoBitmap());
         }
 
@@ -70,9 +69,9 @@ public class MainPerfil extends AppCompatActivity {
         }
         if (!textContra.getText().toString().equals("") && !textReContra.getText().toString().equals("")) {
             if (textContra.getText().toString().equals(textReContra.getText().toString())) {
-                Db.modificarContrasenaUsuario(this, textUsu.getText().toString(), textContra.getText().toString());
+                Db.modificarContrasenaUsuario(this, textUsuario.getText().toString(), textContra.getText().toString());
                 Intent intent = new Intent(this, MainInicio.class);
-                Usuario.setNombre(nombreNuevo);
+                Usuario.setNombre(textUsuario.getText().toString());
                 startActivity(intent);
             }
         }
@@ -89,5 +88,6 @@ public class MainPerfil extends AppCompatActivity {
         onBackPressed();
         finish();
     }
+
 
 }
