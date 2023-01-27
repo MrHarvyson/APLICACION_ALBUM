@@ -10,7 +10,7 @@ import com.example.proyecto.db.Db;
 
 public class Usuario {
     private static String nombre;
-    private String contraseña;
+    private String contrasena;
     private static Bitmap fotoBitmap;
     private static Uri fotoUri;
     public static final String TABLA_USUARIOS = "usuario";
@@ -35,12 +35,12 @@ public class Usuario {
         nombre = nombres;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public static Bitmap getFotoBitmap() {

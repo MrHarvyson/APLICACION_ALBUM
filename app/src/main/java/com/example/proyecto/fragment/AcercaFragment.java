@@ -33,7 +33,6 @@ public class AcercaFragment extends Fragment {
 
         mList = new ArrayList<>();
 
-
         List<String> nestedList1 = new ArrayList<>();
         nestedList1.add(getString(R.string.texto_recycle_lista));
 
@@ -49,7 +48,6 @@ public class AcercaFragment extends Fragment {
         List<String> nestedList5 = new ArrayList<>();
         nestedList5.add(getString(R.string.texto_recycle_info));
 
-
         mList.add(new DataModel(nestedList1, getString(R.string.titulo_recycle_lista)));
         mList.add(new DataModel(nestedList2, getString(R.string.titulo_recycle_agregar)));
         mList.add(new DataModel(nestedList3, getString(R.string.titulo_recycle_borrar)));
@@ -58,10 +56,6 @@ public class AcercaFragment extends Fragment {
 
         adapter = new RecycleViewAdapter(mList);
         recycleLista.setAdapter(adapter);
-
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_acerca, container, false);
-
         return view;
     }
 }

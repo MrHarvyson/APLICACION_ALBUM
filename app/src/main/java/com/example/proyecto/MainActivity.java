@@ -78,8 +78,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // si damos atras no volverá a la ultima pagina sino que sale de la aplicacion
     public void onBackPressed() {
         moveTaskToBack(true);
         finish();
     }
 }
+
+

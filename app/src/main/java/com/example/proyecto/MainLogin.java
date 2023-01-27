@@ -46,7 +46,6 @@ public class MainLogin extends AppCompatActivity {
                 Usuario.crearusuario(textUsuario.getText().toString(),Usuario.getFotoUsuario(this,textUsuario.getText().toString()));
                 startActivity(intent,options.toBundle());
                 finish();
-
             }else{
                 Toast.makeText(this, getString(R.string.notificacion_usuario), Toast.LENGTH_SHORT).show();
                 textContrasena.setText("");
@@ -56,6 +55,5 @@ public class MainLogin extends AppCompatActivity {
         }
 
     }
-
 
 }

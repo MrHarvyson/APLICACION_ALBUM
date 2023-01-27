@@ -5,11 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import androidx.annotation.Nullable;
-
 import com.example.proyecto.entidades.Albumes;
-
 import java.util.ArrayList;
 
 public class Db extends SQLiteOpenHelper {
@@ -26,8 +23,10 @@ public class Db extends SQLiteOpenHelper {
     //crear tablas
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT NOT NULL, contrasena TEXT NOT NULL, avatar BLOB)");
-        db.execSQL("CREATE TABLE " + TABLA_ALBUMES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT NOT NULL, autor TEXT NOT NULL, discografica TEXT NOT NULL, portada BLOB)");
+        db.execSQL("CREATE TABLE " + TABLA_USUARIOS + " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "nombre TEXT NOT NULL, contrasena TEXT NOT NULL, avatar BLOB)");
+        db.execSQL("CREATE TABLE " + TABLA_ALBUMES + " (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "titulo TEXT NOT NULL, autor TEXT NOT NULL, discografica TEXT NOT NULL, portada BLOB)");
     }
 
     //crear usuarios
@@ -45,7 +44,6 @@ public class Db extends SQLiteOpenHelper {
             correcto = true;
         } catch (Exception ex) {
             System.out.println("ERROR CREAR USUARIO");
-            correcto = false;
         } finally {
             dbData.close();
             db.close();
@@ -54,7 +52,7 @@ public class Db extends SQLiteOpenHelper {
         return correcto;
     }
 
-    //consulta de usuario
+    //consulta de usuario y contraseña
     public static boolean consultaEntrarUsuario(Context context, String nombre, String contrasena) {
 
         Db db = new Db(context);
@@ -68,16 +66,14 @@ public class Db extends SQLiteOpenHelper {
                 String contra = fila.getString(2);
                 if (nomb.equals(nombre)) {
                     if (contra.equals(contrasena)) {
-                        System.out.println("Contraseñas idénticas");
                         correcto = true;
                     }
                 } else {
-                    correcto = false;
-                    System.out.println("Contraseñas diferentes");
+                    System.out.println("CONTRASEÑAS DIFERENTES");
                 }
             }
         } catch (Exception ex) {
-            correcto = false;
+            System.out.println("ERROR AL COMPROBAR USUARIO");
         } finally {
             fila.close();
             dbData.close();
@@ -87,6 +83,7 @@ public class Db extends SQLiteOpenHelper {
         return correcto;
     }
 
+    // consulta si el usuario existe
     public static boolean consultaRegistrarUsuario(Context context, String nombre) {
 
         Db db = new Db(context);
@@ -100,48 +97,65 @@ public class Db extends SQLiteOpenHelper {
                 if (nomb.equals(nombre)) {
                     correcto = true;
                 } else {
-                    correcto = false;
+                    System.out.println("ERROR, NOMBRES IGUALES");
                 }
             }
         } catch (Exception ex) {
-            correcto = false;
+            System.out.println("ERROR AL CONSULTAR REGISTRO USUARIO");
         } finally {
             fila.close();
             dbData.close();
             db.close();
         }
-
         return correcto;
     }
 
-    // modificar usuarios
-
+    // modificar nombre usuarios
     public static void modificarNombreUsuario(Context context, String nombreAntiguo, String nombreNuevo) {
 
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
-        String up = ("UPDATE usuario set nombre= '" + nombreNuevo + "' where nombre= '" + nombreAntiguo + "'");
-
-        dbData.execSQL(up);
+        try{
+            String up = ("UPDATE usuario set nombre= '" + nombreNuevo + "' where nombre= '" + nombreAntiguo + "'");
+            dbData.execSQL(up);
+        }catch (Exception ex){
+            System.out.println("ERROR AL MODIFICAR NOMBRE USUARIO");
+        }finally {
+            dbData.close();
+            db.close();
+        }
 
     }
 
+    // modificar contraseña usuarios
     public static void modificarContrasenaUsuario(Context context, String nombre, String contrasena) {
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
-        String up = ("UPDATE usuario set contrasena= '" + contrasena + "' where nombre= '" + nombre + "'");
-        dbData.execSQL(up);
+        try{
+            String up = ("UPDATE usuario set contrasena= '" + contrasena + "' where nombre= '" + nombre + "'");
+            dbData.execSQL(up);
+        }catch (Exception ex){
+            System.out.println("ERROR AL MODIFICAR CONTRASEÑA USUARIO");
+        }finally {
+            dbData.close();
+            db.close();
+        }
     }
 
     // eliminar usuario
-
     public static void eliminarUsuario(Context context, String nombre) {
 
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
-        String eliminar = ("DELETE from usuario WHERE nombre='" + nombre + "'");
-
-        dbData.execSQL(eliminar);
+        try{
+            String eliminar = ("DELETE from usuario WHERE nombre='" + nombre + "'");
+            dbData.execSQL(eliminar);
+        }catch (Exception ex){
+            System.out.println("ERROR AL ELIMINAR USUARIO");
+        }finally {
+            dbData.close();
+            db.close();
+        }
 
     }
 
@@ -162,10 +176,9 @@ public class Db extends SQLiteOpenHelper {
                 dbData.insert(TABLA_ALBUMES, null, values);
                 correcto = true;
             } else {
-                correcto = false;
+                System.out.println("ALBUM EXISTE");
             }
         } catch (Exception ex) {
-            correcto = false;
             System.out.println("ERROR CREAR ÁLBUMES");
         } finally {
             dbData.close();
@@ -185,20 +198,18 @@ public class Db extends SQLiteOpenHelper {
                 dbData.execSQL("DELETE FROM " + TABLA_ALBUMES + " WHERE titulo = '" + titulo + "'");
                 correcto = true;
             } else {
-                correcto = false;
+                System.out.println("NO EXISTE ALBUM");
             }
         } catch (Exception ex) {
-            correcto = false;
+            System.out.println("ERROR AL ELIMINAR ALBUM");
         } finally {
             dbData.close();
             db.close();
         }
-
         return correcto;
     }
 
     // consulta album
-
     public static boolean consultaAlbum(Context context, String titulo) {
 
         Db db = new Db(context);
@@ -207,17 +218,18 @@ public class Db extends SQLiteOpenHelper {
         String titu;
 
         try {
-            Cursor fila = dbData.rawQuery("SELECT titulo FROM " + TABLA_ALBUMES + " WHERE titulo = '" + titulo + "'", null);
+            Cursor fila = dbData.rawQuery("SELECT titulo FROM " + TABLA_ALBUMES +
+                    " WHERE titulo = '" + titulo + "'", null);
             if (fila.moveToFirst()) {
                 titu = fila.getString(0);
                 if (titu.equals(titulo)) {
                     correcto = true;
                 } else {
-                    correcto = false;
+                    System.out.println("ERROR CONSULTA");
                 }
             }
         } catch (Exception ex) {
-            correcto = false;
+            System.out.println("ERROR CONSULTA ALBUM");
         } finally {
             dbData.close();
             db.close();
@@ -226,33 +238,35 @@ public class Db extends SQLiteOpenHelper {
     }
 
     //creamos una lista que guarde todos los álbumes que tenemos en la base de datos
-
     public ArrayList<Albumes> mostrarAlbumes(Context context) {
 
         Db db = new Db(context);
         SQLiteDatabase dbData = db.getWritableDatabase();
-
         ArrayList<Albumes> listaAlbumes = new ArrayList<>();
         Albumes album = null;
         Cursor cursorAlbumes = null;
 
-        cursorAlbumes = dbData.rawQuery("SELECT * FROM " + TABLA_ALBUMES, null);
+        try{
+            cursorAlbumes = dbData.rawQuery("SELECT * FROM " + TABLA_ALBUMES, null);
 
-        if (cursorAlbumes.moveToFirst()) {
-            do {
-                album = new Albumes();
-                //album.setId(cursorAlbumes.getInt(0)); //no hace falta este dato por ahora
-                album.setTitulo(cursorAlbumes.getString(1));
-                album.setAutor(cursorAlbumes.getString(2));
-                album.setDiscografica(cursorAlbumes.getString(3));
-                album.setPortada(cursorAlbumes.getBlob(4));
-                listaAlbumes.add(album);
-            } while (cursorAlbumes.moveToNext());
+            if (cursorAlbumes.moveToFirst()) {
+                do {
+                    album = new Albumes();
+                    //album.setId(cursorAlbumes.getInt(0)); //no hace falta este dato por ahora
+                    album.setTitulo(cursorAlbumes.getString(1));
+                    album.setAutor(cursorAlbumes.getString(2));
+                    album.setDiscografica(cursorAlbumes.getString(3));
+                    album.setPortada(cursorAlbumes.getBlob(4));
+                    listaAlbumes.add(album);
+                } while (cursorAlbumes.moveToNext());
+            }
+            cursorAlbumes.close();
+        }catch (Exception ex){
+            System.out.println("ERROR CREAR LISTA ALBUM");
+        }finally {
+            dbData.close();
+            db.close();
         }
-
-        cursorAlbumes.close();
-        dbData.close();
-        db.close();
         return listaAlbumes;
     }
 

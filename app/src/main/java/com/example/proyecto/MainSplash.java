@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 public class MainSplash extends AppCompatActivity {
-
     Thread timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,24 +16,25 @@ public class MainSplash extends AppCompatActivity {
 
         setContentView(R.layout.activity_main_splash);
 
-        timer = new Thread(){
+        timer = new Thread() {
             @Override
             public void run() {
-                try{
-                    synchronized (this){
+                try {
+                    synchronized (this) {
                         wait(2000);
                     }
-
-                }catch (Exception ex){
-                    System.out.println(ex);
-                }finally {
+                } catch (Exception ex) {
+                    System.out.println("ERROR");
+                } finally {
                     Intent intent = new Intent(MainSplash.this, MainActivity.class);
                     startActivity(intent);
                     finish();
-
                 }
             }
         };
         timer.start();
     }
 }
+
+
+
