@@ -28,9 +28,11 @@ public class ListaFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_lista, container, false);
+
         listaArrayAlbumes = new ArrayList<>();
         listaAlbumes = (RecyclerView) view.findViewById(R.id.lista_albumes);
         listaAlbumes.setLayoutManager(new LinearLayoutManager(getContext()));
+
         Db db = new Db(getContext());
         ListaAlbumesAdapter adapter = new ListaAlbumesAdapter(db.mostrarAlbumes(getContext()));
         listaAlbumes.setAdapter(adapter);
@@ -38,6 +40,5 @@ public class ListaFragment extends Fragment {
         return view;
 
     }
-
 
 }

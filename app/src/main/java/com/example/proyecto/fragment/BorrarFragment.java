@@ -2,7 +2,6 @@ package com.example.proyecto.fragment;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
-import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -24,10 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.proyecto.Animacion;
-import com.example.proyecto.MainActivity;
 import com.example.proyecto.MainInicio;
-import com.example.proyecto.MainLogin;
 import com.example.proyecto.R;
 import com.example.proyecto.db.Db;
 
@@ -60,7 +56,8 @@ public class BorrarFragment extends Fragment {
             public void onClick(View view) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage(getString(R.string.notificacion_desea_eliminar) + " " + titulo.getText().toString() + " ?").setPositiveButton(getString(R.string.notificacion_si), new DialogInterface.OnClickListener() {
+                builder.setMessage(getString(R.string.notificacion_desea_eliminar) + " " + titulo.getText().toString() +
+                        " ?").setPositiveButton(getString(R.string.notificacion_si), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (Db.eliminarAlbum(getContext(), titulo.getText().toString())) {
@@ -68,11 +65,11 @@ public class BorrarFragment extends Fragment {
                             crearNotificacion(getString(R.string.notificacion_album) + " " + titulo.getText().toString() + " " + getString(R.string.notificacion_album_borrado));
                             titulo.setText("");
                             titulo.setHint(getString(R.string.entrada_titulo));
-
                             Intent intent = new Intent(getContext(), MainInicio.class);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getContext(), getString(R.string.notificacion_album) + " " + titulo.getText().toString() + " " + getString(R.string.notificacion_album_no_existe), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.notificacion_album) + " " + titulo.getText().toString()
+                                    + " " + getString(R.string.notificacion_album_no_existe), Toast.LENGTH_SHORT).show();
                             titulo.setText("");
                             titulo.setHint(getString(R.string.entrada_titulo));
                         }
@@ -80,10 +77,8 @@ public class BorrarFragment extends Fragment {
                 }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 }).show();
-
             }
         });
     }

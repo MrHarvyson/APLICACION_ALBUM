@@ -2,16 +2,13 @@ package com.example.proyecto;
 
 import android.util.Pair;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.airbnb.lottie.LottieAnimationView;
-
 public class Animacion {
 
-    private TextView text1, text2; //texto1 --> San Fernando  texto2 --> Biblioteca publica
-    private ImageView fondoVerde,logo;
+    private TextView text1, text2;
+    private ImageView fondoVerde, logo;
 
     public Animacion(TextView text1, TextView text2, ImageView fondoVerde, ImageView logo) {
         this.text1 = text1;
@@ -19,10 +16,6 @@ public class Animacion {
         this.fondoVerde = fondoVerde;
         this.logo = logo;
     }
-
-    //creamos una lista de animaciones
-    //como poder hacer clase para reusar
-    //no puedo ponerlo en clase aparte --> no static variables
 
     public Pair[] animacion() {
 

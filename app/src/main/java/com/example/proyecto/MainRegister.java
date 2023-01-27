@@ -60,7 +60,6 @@ public class MainRegister extends AppCompatActivity {
                         .start(101);
             }
         });
-
     }
 
     // muestra imagen en la pantalla
@@ -113,13 +112,9 @@ public class MainRegister extends AppCompatActivity {
                     textContrasena.setText("");
                     textRecontrasena.setText("");
                 }
-
             } else {
                 Toast.makeText(this, getString(R.string.usuario_existe), Toast.LENGTH_SHORT).show();
             }
-
         }
-
     }
-
 }

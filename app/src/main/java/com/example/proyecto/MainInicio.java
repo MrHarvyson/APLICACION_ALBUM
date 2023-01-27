@@ -3,7 +3,6 @@ package com.example.proyecto;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.media.MediaPlayer;
-
 import com.example.proyecto.databinding.ActivityMainInicioBinding;
 import com.example.proyecto.entidades.Usuario;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -22,12 +20,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.squareup.picasso.Picasso;
 
-
 public class MainInicio extends AppCompatActivity {
 
     //el nombre ActivityMainIncioBinding cambiara según la clase en la que estemos
     ActivityMainInicioBinding binding;
-
     private TextView nombreAplicacion, textoEslogan, textUsuario, tituloAcerca;
     private ImageView fondoVerde, imgFoto, volumen, logo;
     private GoogleSignInOptions gso;
@@ -43,9 +39,6 @@ public class MainInicio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mp = MediaPlayer.create(MainInicio.this, R.raw.musica_acerca);
-        mp.setLooping(true);
-
         binding = ActivityMainInicioBinding.inflate(getLayoutInflater());
 
         //para ocultar barra con el titulo
@@ -55,7 +48,6 @@ public class MainInicio extends AppCompatActivity {
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.myNavHost);
         NavController navController = navHostFragment.getNavController();
-
 
         nombreAplicacion = findViewById(R.id.textNombreAplicacion);
         textoEslogan = findViewById(R.id.textEslogan);
@@ -68,9 +60,13 @@ public class MainInicio extends AppCompatActivity {
         btnInto = findViewById(R.id.btnInto);
         tituloAcerca = findViewById(R.id.tituloAcerca);
         tituloAcerca.setVisibility(View.INVISIBLE);
+
+        // cargamos la canción
+        mp = MediaPlayer.create(MainInicio.this, R.raw.musica_acerca);
+        mp.setLooping(true);
+
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
         gsc = GoogleSignIn.getClient(this, gso);
-
 
         // lo usamos para acceder a la información del usuario de google
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
@@ -85,7 +81,8 @@ public class MainInicio extends AppCompatActivity {
             imgFoto.setImageBitmap(Usuario.getFotoBitmap());
         }
 
-        if(google){
+        // visibilidad de boton google
+        if (google) {
             btnInto.setVisibility(View.INVISIBLE);
         }
 
@@ -141,7 +138,8 @@ public class MainInicio extends AppCompatActivity {
 
                     Animacion anim = new Animacion(nombreAplicacion, textoEslogan, fondoVerde, logo);
                     Intent intent = new Intent(MainInicio.this, MainActivity.class);
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this, anim.animacion());
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainInicio.this,
+                            anim.animacion());
 
                     //cerrar sesion google
                     gsc.signOut().addOnCompleteListener(task -> {
@@ -197,7 +195,7 @@ public class MainInicio extends AppCompatActivity {
         } else {
             textUsuario.setVisibility(View.VISIBLE);
             imgFoto.setVisibility(View.VISIBLE);
-            if(!google){
+            if (!google) {
                 btnInto.setVisibility(View.VISIBLE);
             }
             tituloAcerca.setVisibility(View.INVISIBLE);
@@ -222,7 +220,7 @@ public class MainInicio extends AppCompatActivity {
         }
     }
 
-
+    // cuando inicio
     @Override
     protected void onStart() {
         super.onStart();

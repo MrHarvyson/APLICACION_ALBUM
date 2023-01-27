@@ -1,7 +1,6 @@
 package com.example.proyecto.fragment;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
-
 import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -11,25 +10,20 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.proyecto.MainInicio;
 import com.example.proyecto.R;
 import com.example.proyecto.db.Db;
 import com.github.dhaval2404.imagepicker.ImagePicker;
-
 import java.io.ByteArrayOutputStream;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class CrearFragment extends Fragment {
@@ -67,7 +61,6 @@ public class CrearFragment extends Fragment {
 
         //agregar album
         agregar.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
 
@@ -96,9 +89,7 @@ public class CrearFragment extends Fragment {
 
             }
         });
-
         return view;
-
     }
 
     @Override
