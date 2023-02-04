@@ -1,4 +1,4 @@
-#<font color='#22B573' size=20> TUNEHUB </font>
+#TUNEHUB
 ### ANDROID APP
 
 TUNEHUB es una aplicación android para guardar álbumes de música. Ideal para esos momentos en los que no tienes papel y lapiz para apuntar ese álbum que te recomendó tu colega.
